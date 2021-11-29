@@ -27,7 +27,10 @@ export default function App() {
          password:
         <input type="text" name="password" />
         </label>
-        <input className = "button" type="submit" value="login" />
+        <div className="login">
+        <Link to='/Game' className="loginbut" style={{ textDecoration: 'none', color:'firebrick'}}>Login</Link>
+        </div>
+        
         <p className="create">Don't have an account yet? 
        <div>
        <Link to='/Account'>Create an Account</Link>

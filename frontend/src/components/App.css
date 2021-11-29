@@ -84,9 +84,7 @@ font-family: 'M PLUS 1 Code', sans-serif;
   object-fit: cover;
 
 }
-.button:hover{
-  background-color:darkgrey;
-}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -94,4 +92,30 @@ font-family: 'M PLUS 1 Code', sans-serif;
   to {
     transform: rotate(360deg);
   }
+}
+.login{
+  height: 30px;
+  width: 50px;
+  background-color: lightgrey;
+  text-decoration:none;
+  margin-top: 8px;
+  
+
+}
+.login:hover{
+  background-color:darkgrey;
+}
+.login:link{
+  text-decoration:none;
+  color:firebrick;
+}
+.login:visited{
+  text-decoration:none;
+  color:firebrick;
+}
+.loginbut{
+  font-family: 'Fjalla One', sans-serif;
+font-family: 'M PLUS 1 Code', sans-serif;
+font-weight:bold;
+
 }
