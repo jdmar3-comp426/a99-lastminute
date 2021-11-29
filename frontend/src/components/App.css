@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 1000px;
 }
 
 .App-logo {
@@ -12,22 +13,80 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.App {
+  background-color:white;
+
+}
+.create{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.photo{
+  height:70px;
+  width:70px;
+  animation: MoveUpDown 1s linear infinite;
+  
+ 
+}
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 6000px;
+  }
+}
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: white;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: firebrick;
+  font-family: 'Fjalla One', sans-serif;
+  font-family: 'M PLUS 1 Code', sans-serif;
 }
+.form {
+  display: flex;
+  align-content: space-between;
+  margin: 10px;
+  font-family: 'Fjalla One', sans-serif;
+  font-family: 'M PLUS 1 Code', sans-serif;
+  font-weight:bold;
+}
+.label{
+  margin: 10px;
+}
+input{
+  font-family: 'Fjalla One', sans-serif;
+  font-family: 'M PLUS 1 Code', sans-serif;
 
+}
 .App-link {
   color: #61dafb;
 }
+.button{
+  margin-top: 5px;
+  height: 25px;
+  background-color:lightgrey;
+  color:firebrick;
+  font-weight:bold;
+  font-family: 'Fjalla One', sans-serif;
+font-family: 'M PLUS 1 Code', sans-serif;
 
+}
+.background-photo{
+  width: 1000px;
+  height: 600px;
+  object-fit: cover;
+
+}
+.button:hover{
+  background-color:darkgrey;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
