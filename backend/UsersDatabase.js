@@ -11,7 +11,8 @@ if (row === undefined) {
             id INTEGER PRIMARY KEY, 
             username TEXT, 
             password TEXT,
-            pizzas INTEGER,
+            pizzas INTEGER
+        )
     `;
     db.exec(sqlInit);
     console.log('Your database has been initialized with a new table.');
