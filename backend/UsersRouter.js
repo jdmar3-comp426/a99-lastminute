@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
 router.post('/create', (req, res) => {
     // pull stuff out of the request and make a user
     const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas) VALUES (?, ?, ?)");
-	const info = stmt.run(req.body.user,md5(req.body.password),0);
+	const info = stmt.run(req.body.username,md5(req.body.password),0);
     res.json({ result: 'User Successfully Created' })
 })
 
