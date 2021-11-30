@@ -20,13 +20,13 @@ router.post('/create', (req, res) => {
     res.json({ result: 'User Successfully Created' })
 })
 
-app.patch("/update/:id", (req, res) => {	
+router.patch("/update/:id", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?");
 	const info = stmt.run(req.body.user, md5(req.body.pass), req.params.id);
 	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
 });
 
-app.delete("/delete/:id", (req, res) => {	
+router.delete("/delete/:id", (req, res) => {	
 	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
 	const info = stmt.run(req.params.id);
 	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
