@@ -20,7 +20,7 @@ if (row === undefined) {
             username TEXT, 
             password TEXT,
             pizzas INTEGER,
-            pps REAL,
+            ppc REAL,
             logOutTime INTEGER,
             microwaves INTEGER,
             ovens INTEGER,
