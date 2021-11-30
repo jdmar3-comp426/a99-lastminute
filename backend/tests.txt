@@ -1,1 +1,2 @@
-curl -X POST -d "username=newtest&password=supersecurepassword" http://localhost:3001/app/users/create/
+Test Create
+curl -X POST -d "username=sam&password=supersecurepassword" http://localhost:3001/app/users/create
