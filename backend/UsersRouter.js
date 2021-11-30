@@ -1,14 +1,10 @@
 const express = require('express')
 const router = express.Router()
+var db = require("./UsersDatabase.js")
 
 router.get("/", (req, res) => {
-    res.json([
-        { id: 1, username: "sam" },
-        { id: 2, username: "lingling" },
-        { id: 3, username: "jackson" }, 
-        { id: 4, username: "hyunmo" },
-        { id: 5, username: "eric" },
-    ])
+    const stmt = db.prepare("SELECT * FROM userinfo").all();
+    res.status(200).json(stmt);
 })
 
 router.get("/user1", (req, res) => {
