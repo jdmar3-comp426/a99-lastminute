@@ -15,14 +15,20 @@ router.get("/:id", (req, res) => {
 
 router.post('/create', (req, res) => {
     // pull stuff out of the request and make a user
-    const stmt = db.prepare("INSERT INTO userinfo (user, pass) VALUES (?, ?)");
-	const info = stmt.run(req.body.user,md5(req.body.pass));
+    const stmt = db.prepare("INSERT INTO userinfo (user, pass, pizzas) VALUES (?, ?, ?)");
+	const info = stmt.run(req.body.user,md5(req.body.pass),0);
     res.json({ result: 'User Successfully Created' })
 })
 
-router.patch("/update/:id", (req, res) => {	
+router.patch("/updateuser/:id", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass) WHERE id = ?");
 	const info = stmt.run(req.body.user, md5(req.body.pass), req.params.id);
+	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
+});
+
+router.patch("/setpizza/:id", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET pizzas = COALESCE(?,pizzas) WHERE id = ?");
+	const info = stmt.run(req.body.pizzas, req.params.id);
 	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
 });
 
