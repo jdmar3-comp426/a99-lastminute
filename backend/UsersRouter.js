@@ -17,11 +17,26 @@ router.get("/:id", (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-    // pull stuff out of the request and make a user
+    const username = req.body.username;
+    const password = req.body.password;
+
+    const existsStmt = db.prepare("SELECT * FROM userinfo WHERE username=?").get(username)
+
+    if (existsStmt !== undefined) {
+        res.json({ 
+            result: "failure",
+            message: "An account with that username already exists"
+         })
+         return
+    }
+
     const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas) VALUES (?, ?, ?)");
-	const info = stmt.run(req.body.username, md5(req.body.password), 0);
-    console.log(req.body)
-	res.json({ result: 'User Successfully Created' })
+    stmt.run(username, md5(password), 0);
+
+	res.json({ 
+        result: 'success',
+        message: 'User Successfully Created' 
+    })
 })
 
 router.patch("/updateuser/:id", (req, res) => {	
