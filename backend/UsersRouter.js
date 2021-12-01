@@ -45,19 +45,24 @@ router.patch("/updateuser/:id", (req, res) => {
 	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
 });
 
+// Change Pizza Count API
+// Send new pizza count and user id, sets pizza count of that user id in database
 router.patch("/setpizza/:id", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET pizzas = COALESCE(?,pizzas) WHERE id = ?");
 	const info = stmt.run(req.body.pizzas, req.params.id);
 	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
 });
 
+// Delete User API
+// Send user id, deletes database entry with that id
 router.delete("/delete/:id", (req, res) => {	
 	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
 	const info = stmt.run(req.params.id);
 	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
 });
 
-
+// Log-in API
+// Send username and password, return success or failure. Success if username and password combination exist in databse, failure otherwise
 router.post("/login/", (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE username = ? AND password = ?");
 	const info = stmt.get(req.body.username, req.body.password);
