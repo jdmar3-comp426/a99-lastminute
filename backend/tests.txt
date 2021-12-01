@@ -18,3 +18,17 @@ curl -X POST -d "username=sam&password=38a7744f5523335db845ff1976bf4747" http://
 
 Test Bad Log-In
 curl -X POST -d "username=sam&password=wrongpassword" http://localhost:3001/app/users/login/
+
+
+
+
+
+
+
+
+
+Test log-in
+curl -X POST -d "username=sam&type=loggedin&time=100" http://localhost:3001/app/history/create
+
+Test log-out
+curl -X POST -d "username=sam&type=loggedout&time=110" http://localhost:3001/app/history/create
