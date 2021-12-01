@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, TextField } from "react";
 import "./Account.css";
 import pizzaimage1 from "./pizzaimage1.jpeg";
 import pizzaimage2 from "./pizzaimage2.jpeg";
 
 class Account extends Component {
+  state = { username: "", password: "", passwordAgain: "" }
+
   render() {
     return (
       <div className="full">
@@ -18,6 +20,11 @@ class Account extends Component {
               <form className="create_form">
                 <label className="label">
                   username:
+                  
+                  <TextField value={this.state.username} label="Enter Username" onChange={(e) => {
+                    this.setState({ username: e.target.value })
+                  }}/>
+
                   <input className="input_box" type="text" name="name" />
                 </label>
               </form>

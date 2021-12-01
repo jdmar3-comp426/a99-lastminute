@@ -1,2 +1,14 @@
 Test Create
 curl -X POST -d "username=sam&password=supersecurepassword" http://localhost:3001/app/users/create
+
+Test Get User by ID
+curl -X GET http://localhost:3001/app/users/2/
+
+Test Update username
+curl -X PATCH -d "username=oldtest&password=adifferentpassword" http://localhost:3001/app/users/updateuser/2/
+
+Test Update pizzas
+curl -X PATCH -d "pizzas=5" http://localhost:3001/app/users/setpizza/3/
+
+Test Delete User
+curl -X DELETE http://localhost:3001/app/users/delete/2/
