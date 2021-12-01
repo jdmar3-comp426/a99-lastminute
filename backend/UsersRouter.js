@@ -42,6 +42,7 @@ router.delete("/delete/:id", (req, res) => {
 	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
 });
 
+
 router.post("/login/", (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE username = ? AND password = ?");
 	const info = stmt.get(req.body.username, req.body.password);
@@ -56,7 +57,6 @@ router.post("/login/", (req, res) => {
             "message": "This username password combination doesn't exist"
         });  
     }
-	
 });
 
 
