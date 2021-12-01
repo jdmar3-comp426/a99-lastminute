@@ -22,8 +22,12 @@ router.get("/:id", (req, res) => {
 // Create a new user
 // Send a usernam and password in the request body
 router.post('/create', (req, res) => {
+    console.log(req.body)
+
     const username = req.body.username;
     const password = req.body.password;
+
+    console.log(username, password)
 
     const existsStmt = db.prepare("SELECT * FROM userinfo WHERE username=?").get(username)
 
