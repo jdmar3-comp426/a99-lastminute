@@ -60,7 +60,7 @@ class Account extends Component {
   render() {
     return (
       <div className="full">
-        <img className="border_image" src={pizzaimage1} alt="image" />
+        <img className="border_image" src={pizzaimage1} alt="" />
         <div className="container">
           <h1 className="header">
             <p className="title">Create your Account</p>
@@ -124,7 +124,7 @@ class Account extends Component {
             Submit
           </button>
 
-          <img className="border_image2" src={pizzaimage2} alt="image" />
+          <img className="border_image2" src={pizzaimage2} alt="" />
         </div>
       </div>
     );

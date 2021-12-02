@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 // Specify username in the URL path
 router.get("/getpizza/:username", (req, res) => {
     const stmt = db.prepare("SELECT pizzas FROM userinfo WHERE username = ?").get(req.params.username);
-	res.status(200).json(stmt);
+    res.json({result: stmt.pizzas});
 })
 
 // Create a new user
