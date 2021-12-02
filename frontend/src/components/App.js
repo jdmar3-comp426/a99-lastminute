@@ -1,11 +1,11 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, { } from "react";
 import { Link } from "react-router-dom";
 import pizzalogo from "./pizzalogo2.jpeg";
 import pizzastore from "./pizzastore.jpeg";
 // import account from './Account.js';
-import ReactDOM from "react-dom";
-import { BrowserRouter as Route, Switch } from "react-router-dom";
+//import ReactDOM from "react-dom";
+//import { BrowserRouter as Route, Switch } from "react-router-dom";
 
 export default function App() {
   return (

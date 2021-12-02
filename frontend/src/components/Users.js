@@ -6,7 +6,7 @@ class Users extends Component {
     componentDidMount() {
         fetch('/app/users')
         .then(res => res.json())
-        .then(users => this.setState({ users }))
+        .then(users => this.setState({ users: users }))
     }
 
     render() {
