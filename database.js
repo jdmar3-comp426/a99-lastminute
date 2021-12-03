@@ -25,7 +25,7 @@ if (row === undefined) {
             microwaves INTEGER,
             ovens INTEGER,
             convectionOvens INTEGER,
-            bickOvens INTEGER,
+            brickOvens INTEGER,
             conveyerOvens INTEGER);
     `;
 // Execute SQL commands that we just wrote above.

@@ -1,0 +1,70 @@
+
+.gameboard{
+    display: grid;
+    grid-template-rows: 10vh, 40vh, 50vh;
+}
+.welcome{
+    grid-row: 0/1;
+    height: 10vh;
+    font-size: 5vh;
+    font-family: 'Fjalla One', sans-serif;
+  font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bold;
+    margin-left: 8px;
+}
+.wrapper{
+    height: 45vh;
+    width: 100vw;
+}
+.pizza_button{
+    height: 46vh;
+    width: 45vw;
+    background-image: url("pizzalogo2.jpeg");
+    background-size: 38vw 50vh;
+    background-repeat:no-repeat;
+    background-color:white;
+    float:left;
+
+}
+.bank{
+    float:right;
+    background-color: lightgrey;
+    height:46vh;
+    width:55vw;
+    color: black;
+    font-weight: bolder;
+    font-size: 50px;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    font-size: 4vh;
+    
+    
+}
+.text{
+    font-size: 20px;
+}
+.store{
+    background-image: url("store.jpeg");
+    height: 50vh;
+    width: 55vw;
+    float:right;
+    display: flex;
+    flex-direction: column;
+
+}
+.oven{
+    height: 50px;
+   width: 20vw;
+   font-family: 'Fjalla One', sans-serif;
+   font-family: 'M PLUS 1 Code', sans-serif;
+   font-weight: bolder;
+   margin-left: 15vw;
+   
+}
+.leaderboard{
+    font-family: 'Fjalla One', sans-serif;
+   font-family: 'M PLUS 1 Code', sans-serif;
+   font-weight: bolder;
+   font-size: 4vh;
+}
