@@ -23,7 +23,7 @@ export default function Game({ username }) {
         pizzas: pizzas + 1,
       }),
     };
-
+    
     fetch("/app/users/setpizza/" + username, requestOptions)
       .then((res) => res.json())
       .then((json) => setPizzas(json.pizzas));
@@ -36,7 +36,7 @@ export default function Game({ username }) {
 
   return (
     <div className="gameboard">
-      <div className="welcome">Welcome to {username}'s pizzeria'</div>
+      <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
         <button className="pizza_button" onClick={updatePizzas}></button>

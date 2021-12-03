@@ -11,7 +11,11 @@ if (row === undefined) {
             id INTEGER PRIMARY KEY, 
             username TEXT, 
             password TEXT,
-            pizzas INTEGER
+            pizzas INTEGER,
+            convection INTEGER,
+            brick INTEGER,
+            conveyor INTEGER,
+            topping INTEGER
         )
     `;
     db.exec(sqlInit);
