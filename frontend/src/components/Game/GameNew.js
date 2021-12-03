@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import './Game.css'
+import '../../Assets/store.jpeg'
 
 
 class Game extends Component {

@@ -3,10 +3,10 @@ const app = express()
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const usersRouter = require('./backend/UsersRouter')
+const usersRouter = require('./Users/UsersRouter')
 app.use("/app/users", usersRouter)
 
-const historyRouter = require('./backend/HistoryRouter')
+const historyRouter = require('./History/HistoryRouter')
 app.use("/app/history", historyRouter)
 
 app.listen(3001, function() {
