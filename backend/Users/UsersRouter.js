@@ -152,4 +152,16 @@ router.patch("/setpepperoni/:username", (req, res) => {
 });
 
 
+router.patch("/setgamestate/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET balance = COALESCE(?,balance), cpp = COALESCE(?,cpp), pepperoni = COALESCE(?,pepperoni) WHERE username = ?");
+	const info = stmt.run(req.body.balance, req.body.cpp, req.body.pepperoni, req.params.username);
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "balance": req.body.balance,
+        "cpp": req.body.cpp,
+        "pepperoni": req.body.pepperoni
+    });
+});
+
+
 module.exports = router

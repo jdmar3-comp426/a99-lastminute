@@ -32,49 +32,78 @@ export default function Game({ username }) {
   };
 
 
-  const updateBal = () => {
+  // const updateBal = () => {
+  //   var requestOptions = {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       balance: balance + cpp,
+  //     }),
+  //   };
+  //   fetch("/app/users/setbal/" + username, requestOptions)
+  //     .then((res) => res.json())
+  //     .then((json) => setBal(json.balance));
+  // };
+  // const updateCPP = () => {
+  //   console.log("hi i'm updating")
+  //   var requestOptions = {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       cpp: 10 + 3*pepperoni,
+  //     }),
+  //   };
+  //   fetch("/app/users/setcpp/" + username, requestOptions)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setCPP(json.cpp)
+  //       console.log(json.cpp)
+  //     });
+  // };
+
+  const setGameState = (balance, cpp, pepperoni) => {
     var requestOptions = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        balance: balance + cpp,
+        balance: balance,
+        cpp: cpp,
+        pepperoni: pepperoni,
       }),
     };
-    fetch("/app/users/setbal/" + username, requestOptions)
+    fetch("/app/users/setgamestate/" + username, requestOptions)
       .then((res) => res.json())
-      .then((json) => setBal(json.balance));
-  };
-  const updateCPP = () => {
-    var requestOptions = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        cpp: 10 + 3*pepperoni,
-      }),
-    };
-    fetch("/app/users/setcpp/" + username, requestOptions)
-      .then((res) => res.json())
-      .then((json) => setCPP(json.cpp));
-  };
-  const updatePepperoni = () => {
-    var requestOptions = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        pepperoni: 1,
-      }),
-    };
-    fetch("/app/users/setpepperoni/" + username, requestOptions)
-      .then((res) => res.json())
-      .then((json) => setPepperoni(json.pepperoni))
-      .then(updateCPP);
-  };
+      .then((json) => {
+        console.log("i'm here")
+        setBal(json.balance)
+        setCPP(json.cpp)
+        setPepperoni(json.pepperoni)
+      })
+  }
+
+  // const updatePepperoni = () => {
+  //   var requestOptions = {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       pepperoni: 1,
+  //     }),
+  //   };
+  //   fetch("/app/users/setpepperoni/" + username, requestOptions)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setPepperoni(json.pepperoni)
+  //       updateCPP()
+  //     })
+  // };
 
 
   if (firstLoad) {
@@ -89,7 +118,7 @@ export default function Game({ username }) {
       <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
-        <button className="pizza_button" onClick={updateBal}></button>
+        <button className="pizza_button" onClick={() => setGameState(balance+cpp,cpp,pepperoni)}></button>
 
         <div className="bank">
           BANK
@@ -106,7 +135,7 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="pep" onClick={updatePepperoni}>Pepperoni: $1000 {pepperoni}</button>
+          <button className="pep" onClick={() => setGameState(balance,cpp+3,1)}>Pepperoni: $1000 {pepperoni}</button>
 
           <button className="oven">Mushrooms: $1200</button>
           <button className="oven">Peppers: $1400</button>
