@@ -14,10 +14,12 @@ if (row === undefined) {
             pizzas INTEGER,
             balance REAL,
             cpp REAL,
-            convection INTEGER,
-            brick INTEGER,
-            conveyor INTEGER,
-            topping INTEGER
+            pepperoni INTEGER,
+            mushroom INTEGER,
+            pepper INTEGER,
+            sausage INTEGER,
+            olives INTEGER,
+            cheese INTEGER
         )
     `;
     db.exec(sqlInit);

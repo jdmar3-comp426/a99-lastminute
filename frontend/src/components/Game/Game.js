@@ -6,6 +6,7 @@ export default function Game({ username }) {
   const [cpp, setCPP] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
 
+  
   const getBal = () => {
     fetch("/app/users/getbal/" + username)
       .then((res) => res.json())
@@ -55,7 +56,7 @@ export default function Game({ username }) {
           <p>Balance: $ {balance}</p>
 
           <div className="text">
-            <p>Cost per Pizza: {cpp}</p>
+            <p>Price per Pizza:</p>
             <p>Total Spending:</p>
             <p>Revenue:</p>
           </div>
@@ -65,12 +66,12 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="oven">Convection Oven: $3500</button>
-          <button className="oven">Brick Oven: $4000</button>
-          <button className="oven">Conveyor Oven: $6000</button>
-          <button className="oven">One Topping: $500</button>
-          <button className="oven">Two Toppings: $750</button>
-          <button className="oven">Three Toppings: $1000</button>
+          <button className="oven">Pepperoni: $1000</button>
+          <button className="oven">Mushrooms: $1200</button>
+          <button className="oven">Peppers: $1400</button>
+          <button className="oven">Sausage: $1600</button>
+          <button className="oven">Olives: $1800</button>
+          <button className="oven">Cheese: $2000</button>
         </div>
 
         <div className="leaderboard">Leaderboard</div>
