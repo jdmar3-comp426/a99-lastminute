@@ -129,6 +129,23 @@ router.patch("/setbal/:username", (req, res) => {
         "balance": req.body.balance
     });
 });
+router.patch("/setcpp/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET cpp = COALESCE(?,cpp) WHERE username = ?");
+	const info = stmt.run(req.body.cpp, req.params.username);
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "balance": req.body.cpp
+    });
+});
+
+router.patch("/setpepperoni/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET pepperoni = COALESCE(?,pepperoni) WHERE username = ?");
+	const info = stmt.run(req.body.pepperoni, req.params.username);
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "balance": req.body.pepperoni
+    });
+});
 
 
 module.exports = router

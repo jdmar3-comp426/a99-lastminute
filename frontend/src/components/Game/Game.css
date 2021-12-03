@@ -68,3 +68,11 @@
    font-weight: bolder;
    font-size: 4vh;
 }
+.pep{
+    height: 50px;
+    width: 20vw;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    margin-left: 15vw;
+}
