@@ -2,35 +2,35 @@ import React, { useState } from "react";
 import "./Game.css";
 
 export default function Game({ username }) {
-  const [pizzas, setPizzas] = useState(0);
+  const [balance, setBal] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
 
-  const getPizzas = () => {
-    fetch("/app/users/getpizza/" + username)
+  const getBal = () => {
+    fetch("/app/users/getbal/" + username)
       .then((res) => res.json())
       .then((json) => {
-        setPizzas(parseInt(json.result));
+        setBal(json.result);
       });
   };
 
-  const updatePizzas = () => {
+  const updateBal = () => {
     var requestOptions = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        pizzas: pizzas + 1,
+        balance: balance + 1,
       }),
     };
     
-    fetch("/app/users/setpizza/" + username, requestOptions)
+    fetch("/app/users/setbal/" + username, requestOptions)
       .then((res) => res.json())
-      .then((json) => setPizzas(json.pizzas));
+      .then((json) => setBal(json.balance));
   };
 
   if (firstLoad) {
-    getPizzas();
+    getBal();
     setFirstLoad(false);
   }
 
@@ -39,11 +39,11 @@ export default function Game({ username }) {
       <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
-        <button className="pizza_button" onClick={updatePizzas}></button>
+        <button className="pizza_button" onClick={updateBal}></button>
 
         <div className="bank">
           BANK
-          <p>Pizzas: {pizzas}</p>
+          <p>Balance: {balance}</p>
 
           <div className="text">
             <p>Cost per Pizza:</p>
