@@ -4,8 +4,10 @@ import "./Game.css";
 export default function Game({ username }) {
   const [balance, setBal] = useState(0);
   const [cpp, setCPP] = useState(0);
+  const [pepperoni, setPepperoni] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
 
+ 
   
   const getBal = () => {
     fetch("/app/users/getbal/" + username)
@@ -32,10 +34,26 @@ export default function Game({ username }) {
         balance: balance + cpp,
       }),
     };
-    
     fetch("/app/users/setbal/" + username, requestOptions)
       .then((res) => res.json())
       .then((json) => setBal(json.balance));
+  };
+
+  const updatePepperoni = () => {
+    var requestOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cpp: cpp + 3,
+        pepperoni: 1,
+      }),
+    };
+    fetch("/app/users/setbal/" + username, requestOptions)
+      .then((res) => res.json())
+      .then((json) => setCPP(json.cpp));
+    
   };
 
   if (firstLoad) {
@@ -66,7 +84,10 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="oven">Pepperoni: $1000</button>
+          <button className="pep" onClick={updatePepperoni}>Pepperoni: $1000
+    
+          </button>
+
           <button className="oven">Mushrooms: $1200</button>
           <button className="oven">Peppers: $1400</button>
           <button className="oven">Sausage: $1600</button>
