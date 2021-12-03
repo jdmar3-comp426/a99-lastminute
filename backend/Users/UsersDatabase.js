@@ -12,6 +12,8 @@ if (row === undefined) {
             username TEXT, 
             password TEXT,
             pizzas INTEGER,
+            balance REAL,
+            cpp REAL,
             convection INTEGER,
             brick INTEGER,
             conveyor INTEGER,
