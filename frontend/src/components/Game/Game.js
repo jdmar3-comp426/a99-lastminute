@@ -56,7 +56,7 @@ export default function Game({ username }) {
           <p>Balance: $ {balance}</p>
 
           <div className="text">
-            <p>Price per Pizza:</p>
+            <p>Price per Pizza: $ {cpp}</p>
             <p>Total Spending:</p>
             <p>Revenue:</p>
           </div>
