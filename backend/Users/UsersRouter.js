@@ -110,4 +110,25 @@ router.post("/login", (req, res) => {
 });
 
 
+
+
+router.get("/getbal/:username", (req, res) => {
+    const stmt = db.prepare("SELECT bal FROM userinfo WHERE username = ?").get(req.params.username);
+    res.json({result: stmt.balance});
+})
+router.get("/getcpp/:username", (req, res) => {
+    const stmt = db.prepare("SELECT cpp FROM userinfo WHERE username = ?").get(req.params.username);
+    res.json({result: stmt.cpp});
+})
+router.patch("/setbal/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET balance = COALESCE(?,balance), cpp = COALESCE(?,cpp) WHERE username = ?");
+	const info = stmt.run(req.body.balance, req.body.cpp, req.params.username);
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "balance": req.body.balance,
+        "cpp": req.body.cpp
+    });
+});
+
+
 module.exports = router
