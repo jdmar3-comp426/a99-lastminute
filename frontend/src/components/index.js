@@ -1,5 +1,3 @@
-export { default as NavigationBar } from './NavigationBar'
-export { default as App } from './App'
-export { default as Users } from './Users'
-export { default as Account } from './Account'
-export { default as Game } from './Game'
+export { default as NavigationBar } from './Navigationbar/NavigationBar'
+export { default as App } from './App/App'
+export { default as Users } from './Testing/Users'

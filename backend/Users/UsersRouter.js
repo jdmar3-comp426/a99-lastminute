@@ -76,7 +76,10 @@ router.patch("/updateuser/:id", (req, res) => {
 router.patch("/setpizza/:username", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET pizzas = COALESCE(?,pizzas) WHERE username = ?");
 	const info = stmt.run(req.body.pizzas, req.params.username);
-	res.status(200).json({"message": info.changes + " record updated: user " + req.params.username + " (200)"});
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "pizzas": req.body.pizzas
+    });
 });
 
 // Delete User API
@@ -89,13 +92,14 @@ router.delete("/delete/:id", (req, res) => {
 
 // Log-in API
 // Send username and password, return success or failure. Success if username and password combination exist in databse, failure otherwise
-router.post("/login/", (req, res) => {	
+router.post("/login", (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE username = ? AND password = ?");
 	const info = stmt.get(req.body.username, req.body.password);
     if (info !== undefined) {
         res.status(200).json({
             "result": "success",
-            "message": req.body.username + " logged-in!"
+            "message": req.body.username + " logged-in!",
+            "token": req.body.username
         });    
     } else {
         res.status(200).json({
