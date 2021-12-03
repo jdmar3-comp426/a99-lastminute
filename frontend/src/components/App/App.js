@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import LoggedOutState from "../Login/LoggedOutState";
 import Game from "../Game/Game";
+// import Game from "../Game/GameNew"
 
 export default function App() {
   const [usernameToken, setUsernameToken] = useState();
@@ -9,7 +10,6 @@ export default function App() {
   if (!usernameToken) {
     return <LoggedOutState setUsernameToken={setUsernameToken} />;
   } else {
-    console.log("hello there", usernameToken);
-    return <Game username={usernameToken} />; // inject username
+    return <Game username={usernameToken} />;
   }
 }
