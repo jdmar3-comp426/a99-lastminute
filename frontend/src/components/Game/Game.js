@@ -3,6 +3,7 @@ import "./Game.css";
 
 export default function Game({ username }) {
   const [balance, setBal] = useState(0);
+  const [cpp, setCPP] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
 
   const getBal = () => {
@@ -10,6 +11,13 @@ export default function Game({ username }) {
       .then((res) => res.json())
       .then((json) => {
         setBal(json.result);
+      });
+  };
+  const getCPP = () => {
+    fetch("/app/users/getcpp/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setCPP(json.result);
       });
   };
 
@@ -20,7 +28,7 @@ export default function Game({ username }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        balance: balance + 1,
+        balance: balance + cpp,
       }),
     };
     
@@ -31,6 +39,7 @@ export default function Game({ username }) {
 
   if (firstLoad) {
     getBal();
+    getCPP();
     setFirstLoad(false);
   }
 

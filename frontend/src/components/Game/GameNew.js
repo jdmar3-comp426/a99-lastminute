@@ -8,6 +8,7 @@ class Game extends Component {
     this.state = { username: "newtest", balance: 0, cpp: 0}
     this.attemptUpdateBal = this.attemptUpdateBal.bind(this);
     this.getBal = this.getBal.bind(this);
+    this.getCPP = this.getCPP.bind(this);
     this.setBal = this.setBal.bind(this);
   }
 
@@ -15,7 +16,16 @@ class Game extends Component {
     fetch("/app/users/getbal/"+this.state.username)
     .then(res => res.json())
     .then(json => {
-      this.balance = json.result+1;
+      this.balance = json.result;
+    })
+  }
+
+  getCPP() {
+    fetch("/app/users/getcpp/"+this.state.username)
+    .then(res => res.json())
+    .then(json => {
+      this.cpp = json.result;
+      this.balance = this.balance + this.cpp;
     })
   }
 
@@ -36,6 +46,7 @@ class Game extends Component {
 
   attemptUpdateBal() {
     this.getBal();
+    this.getCPP();
     this.setBal();
   }
 
