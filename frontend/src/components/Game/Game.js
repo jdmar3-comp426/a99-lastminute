@@ -4,6 +4,7 @@ import "./Game.css";
 export default function Game({ username }) {
   const [balance, setBal] = useState(0);
   const [cpp, setCPP] = useState(0);
+  const [pepperoni, setPepperoni] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
 
  
@@ -22,6 +23,14 @@ export default function Game({ username }) {
         setCPP(json.result);
       });
   };
+  const getPepperoni = () => {
+    fetch("/app/users/getpepperoni/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setPepperoni(json.result);
+      });
+  };
+
 
   const updateBal = () => {
     var requestOptions = {
@@ -37,10 +46,41 @@ export default function Game({ username }) {
       .then((res) => res.json())
       .then((json) => setBal(json.balance));
   };
+  const updateCPP = () => {
+    var requestOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cpp: 10 + 3*pepperoni,
+      }),
+    };
+    fetch("/app/users/setcpp/" + username, requestOptions)
+      .then((res) => res.json())
+      .then((json) => setCPP(json.cpp));
+  };
+  const updatePepperoni = () => {
+    var requestOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pepperoni: 1,
+      }),
+    };
+    fetch("/app/users/setpepperoni/" + username, requestOptions)
+      .then((res) => res.json())
+      .then((json) => setPepperoni(json.pepperoni))
+      .then(updateCPP);
+  };
+
 
   if (firstLoad) {
     getBal();
     getCPP();
+    getPepperoni();
     setFirstLoad(false);
   }
 
@@ -66,9 +106,7 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="pep">Pepperoni: $1000
-    
-          </button>
+          <button className="pep" onClick={updatePepperoni}>Pepperoni: $1000 {pepperoni}</button>
 
           <button className="oven">Mushrooms: $1200</button>
           <button className="oven">Peppers: $1400</button>
