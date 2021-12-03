@@ -52,7 +52,7 @@ export default function Game({ username }) {
 
         <div className="bank">
           BANK
-          <p>Balance: {balance}</p>
+          <p>Balance: $ {balance}</p>
 
           <div className="text">
             <p>Price per Pizza:</p>
