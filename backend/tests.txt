@@ -1,5 +1,5 @@
 Test Create
-curl -X POST -d "username=sam&password=supersecurepassword" http://localhost:3001/app/users/create
+curl -X POST -d "username=ling&password=supersecurepassword" http://localhost:3001/app/users/create
 
 Test Get User by ID
 curl -X GET http://localhost:3001/app/users/2/
