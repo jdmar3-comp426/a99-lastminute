@@ -47,7 +47,7 @@ router.post('/create', (req, res) => {
     }
 
     const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas, balance, cpp, convection, brick, conveyor, topping) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    stmt.run(username, md5(password), 0, 0.00, 0.00,  1, 0, 0, 0);
+    stmt.run(username, md5(password), 0, 0.00, 10.00,  1, 0, 0, 0);
 
 	res.json({ 
         result: 'success',
