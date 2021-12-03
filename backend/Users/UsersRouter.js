@@ -46,8 +46,8 @@ router.post('/create', (req, res) => {
          return
     }
 
-    const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas) VALUES (?, ?, ?)");
-    stmt.run(username, md5(password), 0);
+    const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas, convection, brick, conveyor, topping) VALUES (?, ?, ?)");
+    stmt.run(username, md5(password), 0, 1, 0, 0, 0);
 
 	res.json({ 
         result: 'success',
@@ -101,6 +101,7 @@ router.post("/login", (req, res) => {
             "message": req.body.username + " logged-in!",
             "token": req.body.username
         });    
+
     } else {
         res.status(200).json({
             "result": "failure",
