@@ -23,7 +23,8 @@ app.get("*", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
+var ip = process.env.IP || '0.0.0.0';
 
-app.listen(3001, function () {
+app.listen(PORT, ip, function () {
   console.log("express server is running on port " + PORT);
 });
