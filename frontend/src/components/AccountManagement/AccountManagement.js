@@ -73,9 +73,6 @@ export default function AccountManagement({ username, setUsernameToken }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: username
-      }),
     };
     fetch("/app/users/delete/" + username, deleteOptions)
       .then(() => {
