@@ -12,6 +12,7 @@ async function attemptLoginUser(username, password) {
     headers: {
       "Content-Type": "application/json",
     },
+    // Stores the username and password.
     body: JSON.stringify({
       username: username,
       password: md5(password),
