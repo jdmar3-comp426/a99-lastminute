@@ -176,68 +176,94 @@ export default function Game({ username }) {
       <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
-        <button className="pizza_button" onClick={() =>
+       
+       
+       <button className = "pizza_button" onClick={() =>
             setGameState(balance + cpp, cpp, spending, revenue + cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)
-        }/>
-
-        <div className="bank">
-          BANK
-          <div className="text">
+            
+        }>
+          <div className="bank">
+          
             <p>Balance: $ {balance}</p>
             <p>Price per Pizza: ${cpp}</p>
             <p>Total Spending: ${spending}</p>
             <p>Revenue: ${revenue}</p>
-          </div>
+          
         </div>
-      </div>
-
-      <div className="bottomwrapper">
-        <div className="store">
-          <h1 className="oven_header">Store</h1>
-
-          <button className="oven" disabled={pepperoni === 1 || balance < 1000} onClick={() =>
-              setGameState(balance - 1000, cpp + 3, spending + 1000, revenue, 1, mushroom, pepper, sausage, olive, cheese)
-          }>
-            Pepperoni: $1000
-          </button>
-
-          <button className="oven" disabled={mushroom === 1 || balance < 1500} onClick={() =>
-              setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, 1, pepper, sausage, olive, cheese)
-          }>
-            Mushrooms: $1500
-          </button> 
-
-          <button className="oven" disabled={pepper === 1 || balance < 2000} onClick={() =>
-              setGameState(balance - 2000, cpp + 10, spending + 2000, revenue, pepperoni, mushroom, 1, sausage, olive, cheese)
-          }>
-            Peppers: $2000
-          </button>
-
-          <button className="oven" disabled={sausage === 1 || balance < 500} onClick={() =>
-              setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese)
-          }>
-            Sausages: $500
-          </button>
-
-          <button className="oven" disabled={olive === 1 || balance < 3000} onClick={() =>
-              setGameState(balance - 3000, cpp + 8, spending + 3000, revenue, pepperoni, mushroom, pepper, sausage, 1, cheese)
-          }>
-            Olives: $3000
-          </button>
-
-          <button className="oven" disabled={cheese === 1 || balance < 1500} onClick={() =>
-              setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, mushroom, pepper, sausage, olive, 1)
-          }>
-            Extra Cheese: $1500
-          </button>
-        </div>
-
-        <div className="leaderboard">Leaderboard</div>
+        </button>
+       
+        <div className ="leader">
+          <div className="leaderboard1">Leaderboard
         <div className="leaderboard">
           {leaders.map((leader, index) => (
             <p><b>{index + 1}</b> - {leader.username}: {leader.revenue}</p>
           ))}
         </div>
+        </div>
+          </div>
+       
+      
+      </div>
+   
+      <div className="bottomwrapper">
+        <div className="store">
+          
+
+
+          <div className="store1">
+            
+          <button className="pepperoni" disabled={pepperoni === 1 || balance < 1000} onClick={() =>
+              setGameState(balance - 1000, cpp + 3, spending + 1000, revenue, 1, mushroom, pepper, sausage, olive, cheese)
+          }>
+            Pepperoni: $1000
+          </button>
+
+          <button className="mush" disabled={mushroom === 1 || balance < 1500} onClick={() =>
+              setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, 1, pepper, sausage, olive, cheese)
+          }>
+            Mushrooms: $1500
+          </button> 
+          </div>
+
+          <div className="store2">
+          <button className="peppers" disabled={pepper === 1 || balance < 2000} onClick={() =>
+              setGameState(balance - 2000, cpp + 10, spending + 2000, revenue, pepperoni, mushroom, 1, sausage, olive, cheese)
+          }>
+            Peppers: $2000
+          </button>
+
+          <button className="cheese" disabled={cheese === 1 || balance < 1500} onClick={() =>
+              setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, mushroom, pepper, sausage, olive, 1)
+          }>
+            Extra Cheese: $1500
+          </button>
+
+          </div>
+        
+          
+          
+
+
+
+          <div className="store3">
+          <button className="sausage" disabled={sausage === 1 || balance < 500} onClick={() =>
+              setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese)
+          }>
+            Sausages: $500
+          </button>
+
+          <button className="olives" disabled={olive === 1 || balance < 3000} onClick={() =>
+              setGameState(balance - 3000, cpp + 8, spending + 3000, revenue, pepperoni, mushroom, pepper, sausage, 1, cheese)
+          }>
+            Olives: $3000
+          </button>
+          </div>
+          
+         
+        
+        </div>
+         
+        
       </div>
     </div>
   );
