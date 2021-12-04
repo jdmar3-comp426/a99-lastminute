@@ -62,7 +62,7 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
         <label className="label">
           password:
           <input
-            type="text"
+            type="password"
             name="password"
             onChange={(e) => setPassword(e.target.value)}
           />

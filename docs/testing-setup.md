@@ -6,7 +6,7 @@ Below, I'll take you through the steps required to test the app.
 
 1. Open a command line (VS Code Terminal, Terminal, iTerm, whatever) and `cd` into our project's root directory.
 2. `cd` into the `backend` directory
-3. Run `node server.js` to start the express server located at http://localhost:3001
+3. Run `npm start` to start the express server located at http://localhost:3001
 
 #### Start Frontend
 
