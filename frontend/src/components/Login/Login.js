@@ -77,7 +77,7 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
         <p className="create">Don't have an account yet?</p>
 
         <div>
-          <button onClick={handleToggleCreateAccount}>Create an Account</button>
+          <button className="create" onClick={handleToggleCreateAccount}>Create an Account</button>
         </div>
       </form>
 
