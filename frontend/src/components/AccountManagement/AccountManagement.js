@@ -72,9 +72,6 @@ export default function AccountManagement(/*{ username }*/) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: username
-      }),
     };
     fetch("/app/users/delete/" + username, deleteOptions)
       .then(alert("Your account has been deleted"))
