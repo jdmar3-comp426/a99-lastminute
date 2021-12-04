@@ -228,4 +228,4 @@ DELETE /app/history/delete/:id
 | x | y | z |
 
 ## Unhandled Endpoints
-If we get a request on an endpoint not already handled, resolve ?? .
+If we get a request on an endpoint not already handled, resolve by sending from the frontend.
