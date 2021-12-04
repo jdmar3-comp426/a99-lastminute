@@ -88,7 +88,7 @@ input {
     transform: rotate(360deg);
   }
 }
-.login {
+/* .login {
   height: 30px;
   width: 50px;
   background-color: lightgrey;
@@ -105,9 +105,20 @@ input {
 .login:visited {
   text-decoration: none;
   color: firebrick;
-}
+} */
 .loginbut {
   font-family: "Fjalla One", sans-serif;
   font-family: "M PLUS 1 Code", sans-serif;
   font-weight: bold;
+  margin-top: 10px;
+}
+.create{
+  margin-left: 5px;
+  margin-top: 10px;
+}
+.create:hover{
+  background-color: lightgrey;
+}
+.loginbut:hover{
+  background-color: lightgrey;
 }

@@ -16,7 +16,16 @@ if (row === undefined) {
             id INTEGER PRIMARY KEY, 
             username TEXT, 
             password TEXT,
-            pizzas INTEGER
+            balance INTEGER,
+            cpp INTEGER,
+            spending INTEGER,
+            revenue INTEGER,
+            pepperoni INTEGER,
+            mushroom INTEGER,
+            pepper INTEGER,
+            sausage INTEGER,
+            olive INTEGER,
+            cheese INTEGER
         )
     `;
 // Execute SQL commands that we just created above. ^^^
