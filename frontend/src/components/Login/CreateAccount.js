@@ -4,7 +4,6 @@ import "./CreateAccount.css";
 import pizzaimage1 from "../../Assets/pizzaimage1.jpeg";
 import pizzaimage2 from "../../Assets/pizzaimage2.jpeg";
 
-// Creates the account and store the username and password. 
 async function attemptCreateAcount(username, password) {
   const requestOptions = {
     method: "POST",
@@ -22,14 +21,13 @@ async function attemptCreateAcount(username, password) {
   return fetch("/app/users/create", requestOptions).then((res) => res.json());
 }
 
-export default function CreateAccount({ setUsernameToken }) {
-  // Initialize the username, password, and passwordAgain as "". 
+export default function CreateAccount({ setUsernameToken }) { 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
 
   const handleCreateAccount = async (event) => {
-    // If the event doesn't get explicitly handled, its default action should nott be taken as it normally would be. 
+    // If the event doesn't get explicitly handled, its default action should not be taken as it normally would be. 
     event.preventDefault();
 
     // Checks for password equality. If it doesn't match tell the user. 
@@ -38,7 +36,7 @@ export default function CreateAccount({ setUsernameToken }) {
       return;
     }
 
-    // Calls the attemptCreateAcount 
+    // Calls the attemptCreateAcount. 
     const json = await attemptCreateAcount(username, password);
 
     // If it was successful then create the account else tell the user why it didn't work.
