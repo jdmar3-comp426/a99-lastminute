@@ -12,7 +12,7 @@ ReactDOM.render(
         <Routes>
             <Route path="/" element = {<App />} />
             <Route path="/users" element = {<Users />} />
-            <Route path="/accountmanagement" element = {<AccountManagement />} /> // Remove this
+            <Route path="/accountmanagement" element = {<AccountManagement />} /> {/* Remove this */}
         </Routes>
     </BrowserRouter>, document.getElementById('root')
 );
