@@ -80,8 +80,7 @@ export default function CreateAccount({ setUsernameToken }) {
                 />
               </label>
               <p className="pass_recs">
-                *password must include at least 8 characters, a number
-                character, and a special character
+    
               </p>
             </form>
           </div>

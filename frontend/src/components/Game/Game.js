@@ -32,38 +32,6 @@ export default function Game({ username }) {
   };
 
 
-  // const updateBal = () => {
-  //   var requestOptions = {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       balance: balance + cpp,
-  //     }),
-  //   };
-  //   fetch("/app/users/setbal/" + username, requestOptions)
-  //     .then((res) => res.json())
-  //     .then((json) => setBal(json.balance));
-  // };
-  // const updateCPP = () => {
-  //   console.log("hi i'm updating")
-  //   var requestOptions = {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       cpp: 10 + 3*pepperoni,
-  //     }),
-  //   };
-  //   fetch("/app/users/setcpp/" + username, requestOptions)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setCPP(json.cpp)
-  //       console.log(json.cpp)
-  //     });
-  // };
 
   const setGameState = (balance, cpp, pepperoni) => {
     var requestOptions = {
@@ -87,23 +55,7 @@ export default function Game({ username }) {
       })
   }
 
-  // const updatePepperoni = () => {
-  //   var requestOptions = {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       pepperoni: 1,
-  //     }),
-  //   };
-  //   fetch("/app/users/setpepperoni/" + username, requestOptions)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setPepperoni(json.pepperoni)
-  //       updateCPP()
-  //     })
-  // };
+  
 
 
   if (firstLoad) {
@@ -135,7 +87,7 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="pep" onClick={() => setGameState(balance,cpp+3,1)}>Pepperoni: $1000 {pepperoni}</button>
+          <button className="pep" disabled = {pepperoni===1 || balance < 1000} onClick={() => setGameState(balance,cpp+3,1)}>Pepperoni: $1000 {pepperoni}</button>
 
           <button className="oven">Mushrooms: $1200</button>
           <button className="oven">Peppers: $1400</button>
