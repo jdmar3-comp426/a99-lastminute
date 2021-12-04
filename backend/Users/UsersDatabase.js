@@ -11,7 +11,6 @@ if (row === undefined) {
             id INTEGER PRIMARY KEY, 
             username TEXT, 
             password TEXT,
-            pizzas INTEGER,
             balance INTEGER,
             cpp INTEGER,
             spending INTEGER,
