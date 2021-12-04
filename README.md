@@ -1,10 +1,25 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6427013&assignment_repo_type=AssignmentRepo)
-# a99 Finally
-
+# Pizza Press
 COMP426 final project template repository. All your code and documentation goes here. Change this text to be a brief description of your final project. Put the name in the header above. You will change everything below to be the main technical documentation, as outlined below.
+
+Our final project for COMP426 was called "Pizza Press" in loving memory of the pizza restaurant that used to be on Franklin Street. It works similarly to once wildly popular mobile game "Cookie Clicker." Every time you click on the pizza button, you sell a pizza and make money! You can use the money you made to buy toppings that increase the price of your pizzas. The button tracks your current balance and total revenue. You can even compete for a spot on the leaderboard. Just press the pizza to get started!
 
 # Live Version
 Check out the live, hosted version of our project at ![https://a99-lastminute.herokuapp.com](https://a99-lastminute.herokuapp.com)
+
+## Tech Stack
+To see an overview of our tech stack, [click here](/docs/tech-stack.md).
+
+## API Endpoints
+To take a look at our API documentation, [click here](/docs/api-endpoints.md).
+
+## Deployment Process
+To see the current deployment process for the web-hosted version of our game, [click here](/docs/deployment-process.md).
+
+## Testing Setup
+To host the project locally, follow the instructions [here](/docs/testing-setup.md).
+
+
 
 ## First steps
 
@@ -41,12 +56,6 @@ Some basic roles you will want to consider:
 
 You will notice that there are more roles than people in your group.
 That is because you will all be doing a hybrid job of managing a thing while working on other things.
-
-## Check in with instructional staff
-
-Once all the groups are together, we'll assign each group to an LA to check in with as you progress through the project.
-
-We will post that so that your team can schedule a time for an initial check-in with your assigned LA. It would be a good idea also to add your LA to your repository.
 
 ## Assignment instructions
 
