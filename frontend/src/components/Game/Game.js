@@ -105,6 +105,7 @@ export default function Game({ username }) {
       });
   };
 
+  // Updates the game state every time an event occurs, updates database and frontend.
   const setGameState = (balance, cpp, spending, revenue, pepperoni, mushroom, pepper, sausage, olive, cheese) => {
     var requestOptions = {
       method: "PATCH",
@@ -141,6 +142,7 @@ export default function Game({ username }) {
       });
   };
 
+  // Updates the leaderboard sorted by revenue.
   const updateLeaderboard = () => {
     fetch("/app/users/")
       .then((res) => res.json())
@@ -156,6 +158,7 @@ export default function Game({ username }) {
       });
   };
 
+  // Gets all userinfo and updates leaderboard on initial page load.
   if (firstLoad) {
     getBal();
     getCPP();
@@ -171,13 +174,14 @@ export default function Game({ username }) {
     updateLeaderboard();
   }
 
+  // HTML layout of the game page, split into 4 sections (pizza button, bank, leaderboard, upgrade shop).
   return (
     <div className="gameboard">
       <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
        
-       
+      
        <button className = "pizza_button" onClick={() =>
             setGameState(balance + cpp, cpp, spending, revenue + cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)
             
