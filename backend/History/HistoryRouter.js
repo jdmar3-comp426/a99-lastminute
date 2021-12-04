@@ -14,12 +14,11 @@ router.get("/", (req, res) => {
     res.status(200).json(stmt);
 })
 
-// Returns information from specific interaction
-// Send id in the URL path
-router.get("/:id", (req, res) => {
-    const stmt = db.prepare("SELECT * FROM history WHERE id = ?").get(req.params.id);
-	res.status(200).json(stmt);
+router.get("/:username", (req, res) => {
+    const stmt = db.prepare("SELECT * FROM history where username = ?").all(req.params.username);
+    res.status(200).json(stmt);
 })
+
 
 // Create an interaction
 // Send a username, type of interaction (log-in or out), and time
@@ -33,14 +32,6 @@ router.post('/create', (req, res) => {
         message: req.body.username + " just " + req.body.type 
     })
 })
-
-// Delete interactions
-// Send id of interaction to delete
-router.delete("/delete/:id", (req, res) => {	
-	const stmt = db.prepare("DELETE FROM history WHERE id = ?");
-	const info = stmt.run(req.params.id);
-	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
-});
 
 // Export all of the above as a modeule that we can use it elsewhere.
 module.exports = router

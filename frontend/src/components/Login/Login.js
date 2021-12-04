@@ -6,6 +6,21 @@ import pizzalogo from "../../Assets/pizzalogo2.jpeg";
 import pizzastore from "../../Assets/pizzastore.jpeg";
 import "./Login.css";
 
+const pushLogin = (timestamp, username) => {
+  const loginInfo = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      type: "loggedIn",
+      time: timestamp
+    }),
+  };  
+  fetch("/app/history/create/", loginInfo)
+};
+
 async function attemptLoginUser(username, password) {
   const requestOptions = {
     method: "POST",
@@ -40,6 +55,8 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
     // If it was successful then login the account else tell the user why it didn't work.
     if (json.result === "success") {
       setUsernameToken(username);
+      var timestamp = Math.round(new Date() / 1000);
+      pushLogin(timestamp, username);
     } else {
       alert(json.message);
     }
@@ -50,7 +67,7 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
     <div className="Login">
       <header className="Login-header">
         <h1>
-          Welcome to Pizza Press (Sôst){" "}
+          Welcome to Pizza Presser /Sôst/{" "}
           <img className="photo" src={pizzalogo} alt="logo" />
         </h1>
       </header>
