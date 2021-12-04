@@ -47,7 +47,7 @@ export default function CreateAccount({ setUsernameToken }) {
         },
         body: JSON.stringify({
           username: username,
-          type: "createAccount",
+          type: "createdAccount",
           time: timestamp
         }),
       };

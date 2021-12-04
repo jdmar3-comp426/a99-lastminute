@@ -14,13 +14,6 @@ router.get("/", (req, res) => {
     res.status(200).json(stmt);
 })
 
-// Returns information from specific interaction
-// Send id in the URL path
-router.get("/:id", (req, res) => {
-    const stmt = db.prepare("SELECT * FROM history WHERE id = ?").get(req.params.id);
-	res.status(200).json(stmt);
-})
-
 // Create an interaction
 // Send a username, type of interaction (log-in or out), and time
 router.post('/create', (req, res) => {

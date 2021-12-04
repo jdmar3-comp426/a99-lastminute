@@ -7,6 +7,8 @@ export default function AccountManagement(/*{ username }*/) {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordAgain, setNewPasswordAgain] = useState("");
+  const [history, setHistory] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const handleChangePassword = async (event) => {
     event.preventDefault();
@@ -78,6 +80,20 @@ export default function AccountManagement(/*{ username }*/) {
       .then(alert("Your account has been deleted"))
   }
 
+  const getHistory = (event) => {
+    fetch("/app/history/")
+      .then(res => res.json())
+      .then(json => {
+        console.log(json)
+        setHistory(json)
+      })
+  }
+
+  if (firstLoad) {
+    getHistory()
+    setFirstLoad(false)
+  }
+
   return (
     <div class="settings_container">
       <h1>Account Settings</h1>
@@ -126,6 +142,7 @@ export default function AccountManagement(/*{ username }*/) {
 
       <div class="settings_item">
         <h3>Login History</h3>
+        {/* <p>{history}</p> */}
       </div>
     </div>
   );
