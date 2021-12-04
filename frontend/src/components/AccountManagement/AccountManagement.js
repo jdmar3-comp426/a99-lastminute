@@ -28,11 +28,11 @@ export default function AccountManagement(/*{ username }*/) {
 
       const loginJson = await fetch("/app/users/login", loginOptions).then(res => res.json())
       if (loginJson.result !== "success") {
-          alert(login.message)
+          alert(loginJson.message)
       }
       
-      // if current password is incorrect, yell at them (maybe with login endpoint)
-      // if new passwords don't match, yell at them
+      fetch("app/users/")
+
       // otherwise, update user info
   }
 
