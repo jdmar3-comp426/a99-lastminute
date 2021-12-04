@@ -137,7 +137,17 @@ PATCH /app/users/updateuser/:id
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| id | integer | User's ID |
+| balance | integer | User balance |
+| cpp | integer | User cost per pizza |
+| spending | integer | User spending |
+| revenue | integer | User revenue |
+| pepperoni | integer | User has pepperonis or not |
+| mushroom | integer | User has mushrooms or not |
+| pepper | integer | User has peppers or not |
+| sausage | integer | User has sausages or not |
+| olive | integer | User has olives or not |
+| cheese | integer | User has extra cheese or not |
 
 --- 
 ### **Request**
@@ -147,7 +157,18 @@ PATCH /app/users/setgamestate/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | User's username |
+| balance | integer | User balance |
+| cpp | integer | User cost per pizza |
+| spending | integer | User spending |
+| revenue | integer | User revenue |
+| pepperoni | integer | User has pepperonis or not |
+| mushroom | integer | User has mushrooms or not |
+| pepper | integer | User has peppers or not |
+| sausage | integer | User has sausages or not |
+| olive | integer | User has olives or not |
+| cheese | integer | User has extra cheese or not |
+
 
 --- 
 ### **Request**
@@ -157,7 +178,7 @@ DELETE /app/users/delete/:id
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| id | integer | ID of the account to be deleted |
 
 ## History Endpoints
 All history endpoints go through "/app/history" and are found in [this file](/backend/History/HistoryRouter).
