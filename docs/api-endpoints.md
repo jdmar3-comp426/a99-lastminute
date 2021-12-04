@@ -55,7 +55,17 @@ DELETE /app/users/delete/:id
 ## History Endpoints
 All history endpoints go through "/app/history" and are found in [this file](/backend/History/HistoryRouter).
 
+GET /app/history/
+    Gets all information in the "./HistoryDatabase.js" database.
 
+GET /app/history/:id
+    Gets information for a specific id.
+
+POST /app/history/create
+    Post an interaction.
+
+DELETE /app/history/delete/:id
+    Deletes history info for a specific id.
 
 ## Unhandled Endpoints
 If we get a request on an endpoint not already handled, resolve ?? .
