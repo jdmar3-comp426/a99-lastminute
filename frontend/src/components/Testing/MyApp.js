@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // From https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 
+// Test to see if login works in the terminal 
 async function loginUser(credentials) {
   return fetch("/app/users/login", {
     method: "POST",

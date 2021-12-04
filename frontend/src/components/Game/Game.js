@@ -200,7 +200,7 @@ export default function Game({ username }) {
           <div className="leaderboard1">Leaderboard
         <div className="leaderboard">
           {leaders.map((leader, index) => (
-            <p><b>{index + 1}</b> - {leader.username}: {leader.revenue}</p>
+            <p><b>{index + 1}</b> - {leader.username}: ${leader.revenue}</p>
           ))}
         </div>
         </div>
