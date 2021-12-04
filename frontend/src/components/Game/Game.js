@@ -138,7 +138,9 @@ export default function Game({ username }) {
         setSausage(json.sausage)
         setOlive(json.olive)
         setCheese(json.cheese)
+        updateLeaderboard()
       })
+    
   }
 
   const updateLeaderboard = () => {
@@ -152,9 +154,10 @@ export default function Game({ username }) {
           allUsersArray.push([allUsers[i].username, allUsers[i].revenue]);
         }
         allUsersArray.sort(function(a,b){return(b[1]-a[1])});
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
           leaders[i] = allUsersArray[i];
         }
+        // console.log(leaders[0][0]);
         setLeaders(leaders);
         });
   };
