@@ -15,16 +15,16 @@ export default function App() {
         <LoggedOutState setUsernameToken={setUsernameToken} />
       ) : (
         <div>
-          <div class="ppheader">
-            <div class="navbar">
-              <img src={pizzaLogo}/>
+          <div className="ppheader">
+            <div className="navbar">
+              <img src={pizzaLogo} alt="Pizza Logo"/>
               <h1>Welcome to {usernameToken}'s pizzeria</h1>
             </div>
             
-            <div class="navbar">
-              <button class="ppbutton" onClick={() => setShowAccount(false)}>Game</button>
-              <button class="ppbutton" onClick={() => setShowAccount(true)}>Settings</button>
-              <button class="ppbutton" onClick={() => setUsernameToken(undefined)}>Log Out</button>
+            <div className="navbar">
+              <button className="ppbutton" onClick={() => setShowAccount(false)}>Game</button>
+              <button className="ppbutton" onClick={() => setShowAccount(true)}>Settings</button>
+              <button className="ppbutton" onClick={() => setUsernameToken(undefined)}>Log Out</button>
             </div>
           </div>
 

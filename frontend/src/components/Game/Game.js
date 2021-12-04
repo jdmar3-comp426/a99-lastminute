@@ -199,9 +199,9 @@ export default function Game({ username }) {
         <div className ="leader">
           <div className="leaderboard1">Leaderboard
         <div className="leaderboard">
-          {leaders.map((leader, index) => (
-            <p><b>{index + 1}</b> - {leader.username}: {leader.revenue}</p>
-          ))}
+          {leaders.map((leader, index) => 
+              <p key={leader.username}><b>{index + 1}</b> - {leader.username}: {leader.revenue}</p>
+          )}
         </div>
         </div>
           </div>
