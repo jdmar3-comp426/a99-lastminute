@@ -13,7 +13,9 @@ export default function Game({ username }) {
   const [olive, setOlive] = useState(0);
   const [cheese, setCheese] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
-  
+  const [leaders, setLeaders] = useState([]);
+
+  // Gets the balance the user has.
   const getBal = () => {
     fetch("/app/users/getbal/" + username)
       .then((res) => res.json())
@@ -21,6 +23,8 @@ export default function Game({ username }) {
         setBal(json.result);
       });
   };
+
+  // Gets the cost per pizza the user has.
   const getCPP = () => {
     fetch("/app/users/getcpp/" + username)
       .then((res) => res.json())
@@ -28,6 +32,8 @@ export default function Game({ username }) {
         setCPP(json.result);
       });
   };
+
+  // Gets the spending value the user has.
   const getSpending = () => {
     fetch("/app/users/getspending/" + username)
       .then((res) => res.json())
@@ -35,6 +41,8 @@ export default function Game({ username }) {
         setSpending(json.result);
       });
   };
+
+  // Gets the total revenue the user has. 
   const getRevenue = () => {
     fetch("/app/users/getrevenue/" + username)
       .then((res) => res.json())
@@ -42,6 +50,8 @@ export default function Game({ username }) {
         setRevenue(json.result);
       });
   };
+
+  // Gets how many pepperoni the user has. 
   const getPepperoni = () => {
     fetch("/app/users/getpepperoni/" + username)
       .then((res) => res.json())
@@ -49,6 +59,8 @@ export default function Game({ username }) {
         setPepperoni(json.result);
       });
   };
+
+  // Gets how many mushrooms the user has. 
   const getMushroom = () => {
     fetch("/app/users/getmushroom/" + username)
       .then((res) => res.json())
@@ -56,6 +68,8 @@ export default function Game({ username }) {
         setMushroom(json.result);
       });
   };
+
+  // Gets how many peppers the user has. 
   const getPepper = () => {
     fetch("/app/users/getpepper/" + username)
       .then((res) => res.json())
@@ -63,6 +77,8 @@ export default function Game({ username }) {
         setPepper(json.result);
       });
   };
+
+  // Gets how many sausages the user has.
   const getSausage = () => {
     fetch("/app/users/getsausage/" + username)
       .then((res) => res.json())
@@ -70,6 +86,8 @@ export default function Game({ username }) {
         setSausage(json.result);
       });
   };
+
+  // Gets how many olives the user has.
   const getOlive = () => {
     fetch("/app/users/getolive/" + username)
       .then((res) => res.json())
@@ -77,6 +95,8 @@ export default function Game({ username }) {
         setOlive(json.result);
       });
   };
+
+  // Gets how many cheese the user has.
   const getCheese = () => {
     fetch("/app/users/getcheese/" + username)
       .then((res) => res.json())
@@ -118,8 +138,29 @@ export default function Game({ username }) {
         setSausage(json.sausage)
         setOlive(json.olive)
         setCheese(json.cheese)
+        updateLeaderboard()
       })
+    
   }
+
+  const updateLeaderboard = () => {
+    fetch("/app/users/")
+      .then((res) => res.json())
+      .then((json) => {
+        var leaders = [];
+        var allUsers = json.result;
+        var allUsersArray = [];
+        for (let i = 0; i < allUsers.length; i++) {
+          allUsersArray.push([allUsers[i].username, allUsers[i].revenue]);
+        }
+        allUsersArray.sort(function(a,b){return(b[1]-a[1])});
+        for (let i = 0; i < 5; i++) {
+          leaders[i] = allUsersArray[i];
+        }
+        // console.log(leaders[0][0]);
+        setLeaders(leaders);
+        });
+  };
 
   if (firstLoad) {
     getBal();
@@ -133,6 +174,7 @@ export default function Game({ username }) {
     getOlive();
     getCheese();
     setFirstLoad(false);
+    updateLeaderboard();
   }
 
   return (
@@ -167,6 +209,11 @@ export default function Game({ username }) {
         </div>
 
         <div className="leaderboard">Leaderboard</div>
+        <div className="leaderboard">
+          {leaders.map(leader => 
+            <p>{leader[0]}: {leader[1]}</p>
+          )}
+        </div>
       </div>
     </div>
   );

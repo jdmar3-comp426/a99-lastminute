@@ -1,4 +1,6 @@
+// Define app using express
 const express = require('express')
+// Require the md5 module
 const md5 = require('md5')
 const router = express.Router()
 var db = require("./UsersDatabase.js")
@@ -9,7 +11,7 @@ router.use(express.json());
 // Returns all users in the database
 router.get("/", (req, res) => {
     const stmt = db.prepare("SELECT * FROM userinfo").all();
-    res.status(200).json(stmt);
+    res.json({result: stmt});
 })
 
 // Returns userinfo for a given user id
@@ -27,17 +29,21 @@ router.get("/:id", (req, res) => {
 // })
 
 // Create a new user
-// Send a usernam and password in the request body
+// Send a username and password in the request body
 router.post('/create', (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
 
+    // Stores the username and password 
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log(username, password)
+    //console.log(username, password)
 
+    // Creates variable to look into userinfo to see if it already exists.
+    // If it doesn't exists existsStmt === undefined. Else existsStmt === username.
     const existsStmt = db.prepare("SELECT * FROM userinfo WHERE username=?").get(username)
 
+    // If username already exists tell the user that the username already exists.
     if (existsStmt !== undefined) {
         res.json({ 
             result: "failure",
@@ -46,9 +52,12 @@ router.post('/create', (req, res) => {
          return
     }
 
+    // stmt is preparing to hold username, password, and the rest of the values for the game
     const stmt = db.prepare("INSERT INTO userinfo (username, password, balance, cpp, spending, revenue, pepperoni, mushroom, pepper, sausage, olive, cheese) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    // Initialize stmt to be (username, password, balance = 0, cost per pizza = 10, spending = 0, revenue = 0, pepperoni = 0, mushroom = 0, pepper = 0, sausage = 0, olive = 0, cheese = 0)
     stmt.run(username, md5(password), 0, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 
+    // Tell the user that the user was successfully created 
 	res.json({ 
         result: 'success',
         message: 'User Successfully Created' 
@@ -115,7 +124,7 @@ router.post("/login", (req, res) => {
 
 
 
-
+// Selects the the specific value (balance, cpp, spending, etc) from the userinfo database.
 router.get("/getbal/:username", (req, res) => {
     const stmt = db.prepare("SELECT balance FROM userinfo WHERE username = ?").get(req.params.username);
     res.json({result: stmt.balance});
@@ -201,7 +210,7 @@ router.get("/getcheese/:username", (req, res) => {
 //     });
 // });
 
-
+// Updates the user games state and their data. 
 router.patch("/setgamestate/:username", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET balance = COALESCE(?,balance), cpp = COALESCE(?,cpp), spending = COALESCE(?,spending), revenue = COALESCE(?,revenue), pepperoni = COALESCE(?,pepperoni), mushroom = COALESCE(?,mushroom), pepper = COALESCE(?,pepper), sausage = COALESCE(?,sausage), olive = COALESCE(?,olive), cheese = COALESCE(?,cheese) WHERE username = ?");
 	const info = stmt.run(req.body.balance, req.body.cpp, req.body.spending, req.body.revenue, req.body.pepperoni, req.body.mushroom, req.body.pepper, req.body.sausage, req.body.olive, req.body.cheese, req.params.username);
@@ -220,5 +229,5 @@ router.patch("/setgamestate/:username", (req, res) => {
     });
 });
 
-
+// Export all of the above as a module so that we can use it elsewhere.
 module.exports = router
