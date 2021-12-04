@@ -85,6 +85,7 @@ export default function Game({ username }) {
       });
   };
 
+
   const setGameState = (balance, cpp, spending, revenue, pepperoni, mushroom, pepper, sausage, olive, cheese) => {
     var requestOptions = {
       method: "PATCH",
@@ -156,7 +157,7 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="pep" onClick={() => setGameState(balance-1000, cpp+3, spending+1000, revenue, 1, mushroom, pepper, sausage, olive, cheese)}>Pepperoni: $1000 {pepperoni}</button>
+          <button className="pep" disabled = {pepperoni===1 || balance < 1000} onClick={() => setGameState(balance-1000,cpp+3,spending+1000,revenue, 1, mushroom, pepper, sausage, olive, cheese)}>Pepperoni: $1000 {pepperoni}</button>
           <button className="oven">Mushrooms: $1200</button>
           <button className="oven">Peppers: $1400</button>
           <button className="oven">Sausage: $1600</button>
