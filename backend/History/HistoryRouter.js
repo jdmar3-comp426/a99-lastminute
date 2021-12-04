@@ -1,4 +1,6 @@
+// Define app using express
 const express = require('express')
+// Require the md5 module
 const md5 = require('md5')
 const router = express.Router()
 var db = require("./HistoryDatabase.js")
@@ -11,8 +13,6 @@ router.get("/", (req, res) => {
     const stmt = db.prepare("SELECT * FROM history").all();
     res.status(200).json(stmt);
 })
-
-
 
 // Returns information from specific interaction
 // Send id in the URL path
@@ -42,4 +42,5 @@ router.delete("/delete/:id", (req, res) => {
 	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
 });
 
+// Export all of the above as a modeule that we can use it elsewhere.
 module.exports = router
