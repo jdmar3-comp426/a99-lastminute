@@ -73,14 +73,11 @@ router.patch("/updateuser/:id", (req, res) => {
 });
 
 // // Change Pizza Count API
-// // Send new pizza count and username, sets pizza count of that username in database
-// router.patch("/setpizza/:username", (req, res) => {	
-// 	const stmt = db.prepare("UPDATE userinfo SET pizzas = COALESCE(?,pizzas) WHERE username = ?");
-// 	const info = stmt.run(req.body.pizzas, req.params.username);
-// 	res.status(200).json({
-//         "message": info.changes + " record updated: user " + req.params.username + " (200)",
-//         "pizzas": req.body.pizzas
-//     });
+// // Send new pizza count and user id, sets pizza count of that user id in database
+// router.patch("/setpizza/:id", (req, res) => {	
+// 	const stmt = db.prepare("UPDATE userinfo SET pizzas = COALESCE(?,pizzas) WHERE id = ?");
+// 	const info = stmt.run(req.body.pizzas, req.params.id);
+// 	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
 // });
 
 // // Change Pizza Count API
