@@ -5,8 +5,8 @@
 
 *Lingling*: Front end lead
 
-*Eric*: Documentation
+*Eric*: Documentation Manager
 
-*Mo*: Documentation
+*Mo*: Documentation Manager
 
 There was overlap and collaboration between all roles.
