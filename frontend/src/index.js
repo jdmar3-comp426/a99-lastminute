@@ -8,7 +8,7 @@ import AccountManagement from './components/AccountManagement/AccountManagement'
 
 ReactDOM.render(
     <BrowserRouter>
-        <NavigationBar />
+        {/* <NavigationBar /> */}
         <Routes>
             <Route path="/" element = {<App />} />
             <Route path="/users" element = {<Users />} />

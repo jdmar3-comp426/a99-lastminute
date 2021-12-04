@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./AccountManagement.css";
 import md5 from "md5";
 
-export default function AccountManagement(/*{ username }*/) {
-  const username = "sam";
+export default function AccountManagement({ username, setUsernameToken }) {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordAgain, setNewPasswordAgain] = useState("");
@@ -46,7 +45,7 @@ export default function AccountManagement(/*{ username }*/) {
   }
 
   const handleLogout = (event) => {
-
+    setUsernameToken(undefined)
   }
 
   const handleDeleteAccount = (event) => {
@@ -54,6 +53,7 @@ export default function AccountManagement(/*{ username }*/) {
       if (!answer) { return }
 
       // delete account
+      handleLogout()
   }
 
   return (
