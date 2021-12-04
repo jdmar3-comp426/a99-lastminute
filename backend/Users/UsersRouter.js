@@ -46,8 +46,8 @@ router.post('/create', (req, res) => {
          return
     }
 
-    const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas, balance, cpp, pepperoni, mushroom, pepper, sausage, olives, cheese) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    stmt.run(username, md5(password), 0, 0.00, 10.00,  0, 0, 0, 0, 0, 0);
+    const stmt = db.prepare("INSERT INTO userinfo (username, password, pizzas, balance, cpp, spending, revenue, pepperoni, mushroom, pepper, sausage, olives, cheese) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    stmt.run(username, md5(password), 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0);
 
 	res.json({ 
         result: 'success',
@@ -121,10 +121,21 @@ router.get("/getcpp/:username", (req, res) => {
     const stmt = db.prepare("SELECT cpp FROM userinfo WHERE username = ?").get(req.params.username);
     res.json({result: stmt.cpp});
 })
+router.get("/getspending/:username", (req, res) => {
+    const stmt = db.prepare("SELECT spending FROM userinfo WHERE username = ?").get(req.params.username);
+    res.json({result: stmt.spending});
+})
+router.get("/getrevenue/:username", (req, res) => {
+    const stmt = db.prepare("SELECT revenue FROM userinfo WHERE username = ?").get(req.params.username);
+    res.json({result: stmt.revenue});
+})
 router.get("/getpepperoni/:username", (req, res) => {
     const stmt = db.prepare("SELECT pepperoni FROM userinfo WHERE username = ?").get(req.params.username);
     res.json({result: stmt.pepperoni});
 })
+
+
+
 
 router.patch("/setbal/:username", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET balance = COALESCE(?,balance) WHERE username = ?");
@@ -142,6 +153,22 @@ router.patch("/setcpp/:username", (req, res) => {
         "cpp": req.body.cpp
     });
 });
+router.patch("/setspending/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET spending = COALESCE(?,spending) WHERE username = ?");
+	const info = stmt.run(req.body.spending, req.params.username);
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "spending": req.body.spending
+    });
+});
+router.patch("/setrevenue/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET revenue = COALESCE(?,revenue) WHERE username = ?");
+	const info = stmt.run(req.body.revenue, req.params.username);
+	res.status(200).json({
+        "message": info.changes + " record updated: user " + req.params.username + " (200)",
+        "revenue": req.body.revenue
+    });
+});
 router.patch("/setpepperoni/:username", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET pepperoni = COALESCE(?,pepperoni) WHERE username = ?");
 	const info = stmt.run(req.body.pepperoni, req.params.username);
@@ -153,12 +180,14 @@ router.patch("/setpepperoni/:username", (req, res) => {
 
 
 router.patch("/setgamestate/:username", (req, res) => {	
-	const stmt = db.prepare("UPDATE userinfo SET balance = COALESCE(?,balance), cpp = COALESCE(?,cpp), pepperoni = COALESCE(?,pepperoni) WHERE username = ?");
-	const info = stmt.run(req.body.balance, req.body.cpp, req.body.pepperoni, req.params.username);
+	const stmt = db.prepare("UPDATE userinfo SET balance = COALESCE(?,balance), cpp = COALESCE(?,cpp), spending = COALESCE(?,spending), revenue = COALESCE(?,revenue), pepperoni = COALESCE(?,pepperoni) WHERE username = ?");
+	const info = stmt.run(req.body.balance, req.body.cpp, req.body.spending, req.body.revenue, req.body.pepperoni, req.params.username);
 	res.status(200).json({
         "message": info.changes + " record updated: user " + req.params.username + " (200)",
         "balance": req.body.balance,
         "cpp": req.body.cpp,
+        "spending": req.body.spending,
+        "revenue": req.body.revenue,
         "pepperoni": req.body.pepperoni
     });
 });
