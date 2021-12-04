@@ -180,17 +180,13 @@ DELETE /app/users/delete/:id
 | --- | --- | --- |
 | id | integer | ID of the account to be deleted |
 
+
 ## History Endpoints
 All history endpoints go through "/app/history" and are found in [this file](/backend/History/HistoryRouter).
 
 ### **Request**
 GET /app/history/
 > Gets all information in the "./HistoryDatabase.js" database.
-
-### **Parameters**
-| Name | Type | Description |
-| --- | --- | --- |
-| x | y | z |
 
 --- 
 ### **Request**
@@ -200,7 +196,7 @@ GET /app/history/:id
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| id | integer | Required. Specify where to look for specific information in database. |
 
 --- 
 ### **Request**
@@ -210,7 +206,9 @@ POST /app/history/create
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
+| type | string | Required. "log-in" or "log-out" |
+| time | integer | Required. Represents seconds since Jan 1 1970 |
 
 --- 
 ### **Request**
@@ -220,7 +218,7 @@ DELETE /app/history/delete/:id
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| id | integer | ID of the account to be deleted |
 
 ## Unhandled Endpoints
 If we get a request on an endpoint not already handled, resolve ?? .
