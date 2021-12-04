@@ -76,8 +76,8 @@ export default function AccountManagement({ username, setUsernameToken }) {
     };
     fetch("/app/users/delete/" + username, deleteOptions)
       .then(() => {
-        //   handleLogout();
           alert("Your account has been deleted")
+          handleLogout();
       })
 
   }
@@ -85,9 +85,7 @@ export default function AccountManagement({ username, setUsernameToken }) {
   const getHistory = (event) => {
     fetch("/app/history/")
       .then(res => res.json())
-      .then(json => {
-        setHistory(json)
-      })
+      .then(json => setHistory(json))
   }
 
   if (firstLoad) {
@@ -143,7 +141,13 @@ export default function AccountManagement({ username, setUsernameToken }) {
 
       <div class="settings_item">
         <h3>Login History</h3>
-        {/* <p>{history}</p> */}
+        <div>
+          {history.map((item) => {
+            var date = new Date(0);
+            date.setUTCSeconds(item.time)
+            return <p key={item.time}>{item.type} at {date.toLocaleString()}</p>
+          })}
+        </div>
       </div>
     </div>
   );
