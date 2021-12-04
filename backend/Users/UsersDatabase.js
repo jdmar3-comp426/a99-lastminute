@@ -20,7 +20,7 @@ if (row === undefined) {
             mushroom INTEGER,
             pepper INTEGER,
             sausage INTEGER,
-            olives INTEGER,
+            olive INTEGER,
             cheese INTEGER
         )
     `;

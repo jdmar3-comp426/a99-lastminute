@@ -7,6 +7,11 @@ export default function Game({ username }) {
   const [spending, setSpending] = useState(0);
   const [revenue, setRevenue] = useState(0);
   const [pepperoni, setPepperoni] = useState(0);
+  const [mushroom, setMushroom] = useState(0);
+  const [pepper, setPepper] = useState(0);
+  const [sausage, setSausage] = useState(0);
+  const [olive, setOlive] = useState(0);
+  const [cheese, setCheese] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
   
   const getBal = () => {
@@ -23,13 +28,6 @@ export default function Game({ username }) {
         setCPP(json.result);
       });
   };
-  const getPepperoni = () => {
-    fetch("/app/users/getpepperoni/" + username)
-      .then((res) => res.json())
-      .then((json) => {
-        setPepperoni(json.result);
-      });
-  };
   const getSpending = () => {
     fetch("/app/users/getspending/" + username)
       .then((res) => res.json())
@@ -44,8 +42,50 @@ export default function Game({ username }) {
         setRevenue(json.result);
       });
   };
+  const getPepperoni = () => {
+    fetch("/app/users/getpepperoni/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setPepperoni(json.result);
+      });
+  };
+  const getMushroom = () => {
+    fetch("/app/users/getmushroom/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setMushroom(json.result);
+      });
+  };
+  const getPepper = () => {
+    fetch("/app/users/getpepper/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setPepper(json.result);
+      });
+  };
+  const getSausage = () => {
+    fetch("/app/users/getsausage/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setSausage(json.result);
+      });
+  };
+  const getOlive = () => {
+    fetch("/app/users/getolive/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setOlive(json.result);
+      });
+  };
+  const getCheese = () => {
+    fetch("/app/users/getcheese/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setCheese(json.result);
+      });
+  };
 
-  const setGameState = (balance, cpp, spending, revenue, pepperoni) => {
+  const setGameState = (balance, cpp, spending, revenue, pepperoni, mushroom, pepper, sausage, olive, cheese) => {
     var requestOptions = {
       method: "PATCH",
       headers: {
@@ -57,6 +97,11 @@ export default function Game({ username }) {
         spending: spending,
         revenue: revenue,
         pepperoni: pepperoni,
+        mushroom: mushroom,
+        pepper: pepper,
+        sausage: sausage,
+        olive: olive,
+        cheese: cheese,
       }),
     };
     fetch("/app/users/setgamestate/" + username, requestOptions)
@@ -67,6 +112,11 @@ export default function Game({ username }) {
         setSpending(json.spending)
         setRevenue(json.revenue)
         setPepperoni(json.pepperoni)
+        setMushroom(json.mushroom)
+        setPepper(json.pepper)
+        setSausage(json.sausage)
+        setOlive(json.olive)
+        setCheese(json.cheese)
       })
   }
 
@@ -76,6 +126,11 @@ export default function Game({ username }) {
     getSpending();
     getRevenue();
     getPepperoni();
+    getMushroom();
+    getPepper();
+    getSausage();
+    getOlive();
+    getCheese();
     setFirstLoad(false);
   }
 
@@ -84,7 +139,7 @@ export default function Game({ username }) {
       <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
-        <button className="pizza_button" onClick={() => setGameState(balance+cpp, cpp, spending, revenue+cpp, pepperoni)}></button>
+        <button className="pizza_button" onClick={() => setGameState(balance+cpp, cpp, spending, revenue+cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)}></button>
 
         <div className="bank">
           BANK
@@ -101,7 +156,7 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="pep" onClick={() => setGameState(balance-1000, cpp+3, spending+1000, revenue, 1)}>Pepperoni: $1000 {pepperoni}</button>
+          <button className="pep" onClick={() => setGameState(balance-1000, cpp+3, spending+1000, revenue, 1, mushroom, pepper, sausage, olive, cheese)}>Pepperoni: $1000 {pepperoni}</button>
           <button className="oven">Mushrooms: $1200</button>
           <button className="oven">Peppers: $1400</button>
           <button className="oven">Sausage: $1600</button>
