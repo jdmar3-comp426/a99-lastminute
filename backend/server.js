@@ -6,13 +6,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Establish users endpoints
-const usersRouter = require("./Users/UsersRouter");
-app.use("/app/users", usersRouter);
+// const usersRouter = require("./Users/UsersRouter");
+// app.use("/app/users", usersRouter);
 
-// Establish history endpoints
-const historyRouter = require("./History/HistoryRouter");
-app.use("/app/history", historyRouter);
+// // Establish history endpoints
+// const historyRouter = require("./History/HistoryRouter");
+// app.use("/app/history", historyRouter);
 
+app.get("/app", (req, res) => {
+  res.json({"message": "your api works"})
+})
 // If we get a request on an endpoint not already handled, send React files
 app.use(express.static(path.resolve(__dirname, "../frontend/build")));
 app.get("*", (req, res) => {
