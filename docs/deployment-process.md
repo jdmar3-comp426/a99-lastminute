@@ -18,3 +18,7 @@ Then, Sam will do the following:
 This will automatically trigger a new deployment on Heroku (pretty cool, right?) and the new version will be deployed in a couple minutes.
 
 Eventually, when/if we get approval for Heroku to monitor our shared repo, we will only have to merge main into `deploy` and it'll automatically trigger a deployment.
+
+## Relevant Links (mostly for Sam)
+Heroku Dashboard: https://dashboard.heroku.com/apps/a99-lastminute
+samrshi/a99-lastminute (deploy): https://github.com/samrshi/a99-lastminute/tree/deploy
