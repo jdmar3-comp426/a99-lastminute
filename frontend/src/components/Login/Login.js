@@ -61,7 +61,7 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
     <div className="Login">
       <header className="Login-header">
         <h1>
-          Welcome to Pizza Press (Sôst){" "}
+          Welcome to Pizza Presser /Sôst/{" "}
           <img className="photo" src={pizzalogo} alt="logo" />
         </h1>
       </header>
