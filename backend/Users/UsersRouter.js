@@ -64,13 +64,12 @@ router.post('/create', (req, res) => {
     })
 })
 
-// Update user info for a user with the given id
-// Send id in the URL path and username/password in request body
-router.patch("/updateuser/:id", (req, res) => {	
-	const stmt = db.prepare("UPDATE userinfo SET username = COALESCE(?,username), password = COALESCE(?,password) WHERE id = ?");
-	const info = stmt.run(req.body.username, md5(req.body.password), req.params.id);
-	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
+router.patch("/updatepass/:username", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET password = COALESCE(?,password) WHERE username = ?");
+	const info = stmt.run(req.body.password, req.params.username);
+	res.status(200).json({"message": info.changes + " record updated: user " + req.params.username + " (200)"});
 });
+
 
 // // Change Pizza Count API
 // // Send new pizza count and user id, sets pizza count of that user id in database
@@ -93,14 +92,15 @@ router.patch("/updateuser/:id", (req, res) => {
 
 // Delete User API
 // Send user id, deletes database entry with that id
-router.delete("/delete/:id", (req, res) => {	
-	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
-	const info = stmt.run(req.params.id);
-	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
+router.delete("/delete/:username", (req, res) => {	
+	const stmt = db.prepare("DELETE FROM userinfo WHERE username = ?");
+	const info = stmt.run(req.params.username);
+	res.status(200).json({"message": info.changes + " record deleted: user " + req.params.username + " (200)"});
 });
 
 // Log-in API
 // Send username and password, return success or failure. Success if username and password combination exist in databse, failure otherwise
+// password is encrypted before sent to API call
 router.post("/login", (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE username = ? AND password = ?");
 	const info = stmt.get(req.body.username, req.body.password);
