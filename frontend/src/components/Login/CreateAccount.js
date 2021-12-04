@@ -17,8 +17,7 @@ async function attemptCreateAcount(username, password) {
     }),
   };
 
-  return fetch("/app/users/create", requestOptions)
-    .then((res) => res.json());
+  return fetch("/app/users/create", requestOptions).then((res) => res.json());
 }
 
 export default function CreateAccount({ setUsernameToken }) {
@@ -27,7 +26,7 @@ export default function CreateAccount({ setUsernameToken }) {
   const [passwordAgain, setPasswordAgain] = useState("");
 
   const handleCreateAccount = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     // check password equality
     if (password !== passwordAgain) {
@@ -35,11 +34,11 @@ export default function CreateAccount({ setUsernameToken }) {
       return;
     }
 
-    const json = await attemptCreateAcount(username, password)
+    const json = await attemptCreateAcount(username, password);
 
     if (json.result === "success") {
       alert(json.message);
-      setUsernameToken(username)
+      setUsernameToken(username);
     } else {
       alert(json.message);
     }
@@ -53,55 +52,41 @@ export default function CreateAccount({ setUsernameToken }) {
           <p className="title">Create your Account</p>
         </h1>
 
-        <div className="forms">
-          <div>
-            <form className="create_form">
-              <label className="label">
-                username:
-                <input
-                  className="input_box"
-                  type="text"
-                  name="username"
-                  onChange={e => setUsername(e.target.value)}
-                />
-              </label>
-            </form>
-          </div>
+        <form className="forms create_form" onSubmit={handleCreateAccount}>
+          <label for="username" className="label">
+            username:
+            <input
+              className="input_box"
+              type="text"
+              name="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
 
-          <div>
-            <form className="create_form">
-              <label className="label">
-                password:
-                <input
-                  className="input_box"
-                  type="text"
-                  name="password"
-                  onChange={e => setPassword(e.target.value)}
-                />
-              </label>
-              <p className="pass_recs">
-    
-              </p>
-            </form>
-          </div>
+          <label for="password" className="label">
+            password:
+            <input
+              className="input_box"
+              type="password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
 
-          <div>
-            <form className="create_form">
-              <label className="label">
-                Re-enter password:
-                <input
-                  className="input_box"
-                  type="text"
-                  name="password_again"
-                  onChange={e => setPasswordAgain(e.target.value)}
-                />
-              </label>
-            </form>
-          </div>
-        </div>
-        <button className="button1" href="#" onClick={handleCreateAccount}>
-          Submit
-        </button>
+          <label for="password_again" className="label">
+            Re-enter password:
+            <input
+              className="input_box"
+              type="password"
+              name="password_again"
+              onChange={(e) => setPasswordAgain(e.target.value)}
+            />
+          </label>
+
+          <button type="submit" className="button1">
+            Submit
+          </button>
+        </form>
 
         <img className="border_image2" src={pizzaimage2} alt="" />
       </div>
