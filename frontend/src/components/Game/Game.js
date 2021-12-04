@@ -4,6 +4,8 @@ import "./Game.css";
 export default function Game({ username }) {
   const [pizzas, setPizzas] = useState(0);
   const [firstLoad, setFirstLoad] = useState(true);
+  const [leaders, setLeaders] = useState([]);
+
 
   const getPizzas = () => {
     fetch("/app/users/getpizza/" + username)
@@ -29,9 +31,32 @@ export default function Game({ username }) {
       .then((json) => setPizzas(json.pizzas));
   };
 
+  const updateLeaderboard = () => {
+    fetch("/app/users/")
+      .then((res) => res.json())
+      .then((json) => {
+        var leaders = [];
+        var allUsers = json.result;
+        // console.log(allUsers);
+        // console.log(allUsers[0]);
+        // console.log(allUsers[0].username);
+        var allUsersArray = [];
+        for (let i = 0; i < allUsers.length; i++) {
+          allUsersArray.push([allUsers[i].username, allUsers[i].pizzas]);
+        }
+        allUsersArray.sort(function(a,b){return(b[1]-a[1])});
+        for (let i = 0; i < 10; i++) {
+          leaders[i] = allUsersArray[i];
+        }
+        setLeaders(leaders);
+        //console.log(leaders);
+        });
+  };
+
   if (firstLoad) {
     getPizzas();
     setFirstLoad(false);
+    updateLeaderboard();
   }
 
   return (
@@ -65,6 +90,11 @@ export default function Game({ username }) {
         </div>
 
         <div className="leaderboard">Leaderboard</div>
+        <div className="leaderboard">
+          {leaders.map(leader => 
+            <p>{leader[0]}: {leader[1]}</p>
+          )}
+        </div>
       </div>
     </div>
   );

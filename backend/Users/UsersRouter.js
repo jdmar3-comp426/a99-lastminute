@@ -9,7 +9,7 @@ router.use(express.json());
 // Returns all users in the database
 router.get("/", (req, res) => {
     const stmt = db.prepare("SELECT * FROM userinfo").all();
-    res.status(200).json(stmt);
+    res.json({result: stmt});
 })
 
 // Returns userinfo for a given user id
@@ -27,14 +27,14 @@ router.get("/getpizza/:username", (req, res) => {
 })
 
 // Create a new user
-// Send a usernam and password in the request body
+// Send a username and password in the request body
 router.post('/create', (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
 
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log(username, password)
+    //console.log(username, password)
 
     const existsStmt = db.prepare("SELECT * FROM userinfo WHERE username=?").get(username)
 
