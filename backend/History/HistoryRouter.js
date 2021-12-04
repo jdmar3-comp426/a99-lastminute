@@ -27,13 +27,5 @@ router.post('/create', (req, res) => {
     })
 })
 
-// Delete interactions
-// Send id of interaction to delete
-router.delete("/delete/:id", (req, res) => {	
-	const stmt = db.prepare("DELETE FROM history WHERE id = ?");
-	const info = stmt.run(req.params.id);
-	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
-});
-
 // Export all of the above as a modeule that we can use it elsewhere.
 module.exports = router
