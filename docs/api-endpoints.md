@@ -192,13 +192,13 @@ GET /app/history/
 
 --- 
 ### **Request**
-GET /app/history/:id
+GET /app/history/:username
 > Gets information for a specific id.
 
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| id | integer | Required. Specify where to look for specific information in database. |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -212,15 +212,6 @@ POST /app/history/create
 | type | string | Required. "log-in" or "log-out" |
 | time | integer | Required. Represents seconds since Jan 1 1970 |
 
---- 
-### **Request**
-DELETE /app/history/delete/:id
-> Deletes history info for a specific id.
-
-### **Parameters**
-| Name | Type | Description |
-| --- | --- | --- |
-| id | integer | ID of the account to be deleted |
 
 ## Unhandled Endpoints
 If we get a request on an endpoint not already handled, resolve by sending from the frontend.
