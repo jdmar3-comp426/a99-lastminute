@@ -14,6 +14,12 @@ router.get("/", (req, res) => {
     res.status(200).json(stmt);
 })
 
+router.get("/:username", (req, res) => {
+    const stmt = db.prepare("SELECT * FROM history where username = ?").all(req.params.username);
+    res.status(200).json(stmt);
+})
+
+
 // Create an interaction
 // Send a username, type of interaction (log-in or out), and time
 router.post('/create', (req, res) => {

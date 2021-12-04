@@ -78,7 +78,7 @@ export default function AccountManagement(/*{ username }*/) {
   }
 
   const getHistory = (event) => {
-    fetch("/app/history/")
+    fetch("/app/history/"+username)
       .then(res => res.json())
       .then(json => {
         console.log(json)
