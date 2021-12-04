@@ -33,6 +33,8 @@ async function attemptLoginUser(username, password) {
     }),
   };
 
+  // Fetch the loging user endpoint from UserRouter.js
+  // Return success or failure. Success if username and password combination exist in databse, failure otherwise
   return fetch("/app/users/login", requestOptions).then((response) =>
     response.json()
   );
@@ -43,11 +45,14 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
   const [password, setPassword] = useState();
 
   const handleSubmit = async (event) => {
+    // If the event doesn't get explicitly handled, its default action should not be taken as it normally would be.
     event.preventDefault();
     console.log(username, password);
 
+    // Calls the attemptLoginUser. 
     const json = await attemptLoginUser(username, password);
 
+    // If it was successful then login the account else tell the user why it didn't work.
     if (json.result === "success") {
       setUsernameToken(username);
       var timestamp = Math.round(new Date() / 1000);
@@ -58,6 +63,7 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
   };
 
   return (
+    // HTML layout of Login
     <div className="Login">
       <header className="Login-header">
         <h1>
