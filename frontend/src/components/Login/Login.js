@@ -14,7 +14,7 @@ const pushLogin = (timestamp, username) => {
     },
     body: JSON.stringify({
       username: username,
-      type: "login",
+      type: "loggedIn",
       time: timestamp
     }),
   };  

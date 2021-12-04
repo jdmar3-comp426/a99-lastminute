@@ -54,7 +54,7 @@ export default function AccountManagement(/*{ username }*/) {
       },
       body: JSON.stringify({
         username: username,
-        type: "logout",
+        type: "loggedOut",
         time: timestamp
       }),
     };
