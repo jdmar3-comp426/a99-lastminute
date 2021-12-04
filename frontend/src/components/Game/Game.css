@@ -2,10 +2,11 @@
 .gameboard{
     display: grid;
     grid-template-rows: 10vh, 40vh, 50vh;
+    height: 150vh;
 }
 .welcome{
     grid-row: 0/1;
-    height: 10vh;
+    
     font-size: 5vh;
     font-family: 'Fjalla One', sans-serif;
   font-family: 'M PLUS 1 Code', sans-serif;
@@ -17,20 +18,22 @@
     width: 100vw;
 }
 .pizza_button{
-    height: 46vh;
-    width: 45vw;
+    height: 60vh;
+    width: 55vw;
     background-image: url("../../Assets/pizzalogo2.jpeg");
-    background-size: 38vw 50vh;
+    background-size: 40vw 70vh;
+    background-position: center;
     background-repeat:no-repeat;
     background-color:white;
     float:left;
-
+    margin-top: -10vh;
+    border: none;
 }
 .bank{
     float:right;
-    background-color: lightgrey;
+    
     height:46vh;
-    width:55vw;
+    width:30vw;
     color: black;
     font-weight: bolder;
     font-size: 50px;
@@ -47,7 +50,7 @@
 .store{
     background-image: url("../../Assets/store.jpeg");
     height: 50vh;
-    width: 55vw;
+    width: 45vw;
     float:right;
     display: flex;
     flex-direction: column;
