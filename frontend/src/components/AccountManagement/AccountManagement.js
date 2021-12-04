@@ -1,3 +1,4 @@
+import md5 from "md5";
 import React, { useState } from "react";
 import "./AccountManagement.css";
 
@@ -6,6 +7,34 @@ export default function AccountManagement(/*{ username }*/) {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordAgain, setNewPasswordAgain] = useState("");
+
+  const handleChangePassword = async (event) => {
+      event.preventDefault();
+
+      if (newPassword !== newPasswordAgain) {
+          alert("New Passwords must match")
+      }
+      
+      const loginOptions = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: {
+              username: username,
+              password: md5(password)
+          }
+      }
+
+      const loginJson = await fetch("/app/users/login", loginOptions).then(res => res.json())
+      if (loginJson.result !== "success") {
+          alert(login.message)
+      }
+      
+      // if current password is incorrect, yell at them (maybe with login endpoint)
+      // if new passwords don't match, yell at them
+      // otherwise, update user info
+  }
 
   return (
     <div class="settings_container">
@@ -16,7 +45,7 @@ export default function AccountManagement(/*{ username }*/) {
         <p>{username}</p>
       </div>
 
-      <form class="settings_item column">
+      <form class="settings_item column" onSubmit={handleChangePassword}>
         <h3>Change Password</h3>
 
           <label for="password">Current Password</label>
