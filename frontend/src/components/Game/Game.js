@@ -15,6 +15,8 @@ export default function Game({ username }) {
   const [firstLoad, setFirstLoad] = useState(true);
   const [leaders, setLeaders] = useState([]);
 
+  let opa = 30;
+
   // Gets the balance the user has.
   const getBal = () => {
     fetch("/app/users/getbal/" + username)
@@ -105,6 +107,13 @@ export default function Game({ username }) {
       });
   };
 
+  const updateSausage = () => {
+    if(sausage === 1){
+      return false
+    }
+    return true
+  }
+
   // Updates the game state every time an event occurs, updates database and frontend.
   const setGameState = (balance, cpp, spending, revenue, pepperoni, mushroom, pepper, sausage, olive, cheese) => {
     var requestOptions = {
@@ -139,6 +148,11 @@ export default function Game({ username }) {
         setOlive(json.olive);
         setCheese(json.cheese);
         updateLeaderboard();
+        // updatePep();
+        // updateMush();
+        // updatePepper();
+        updateSausage();
+
       });
   };
 
@@ -158,6 +172,31 @@ export default function Game({ username }) {
       });
   };
 
+  const deleteSausage = () => {
+    setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese);
+    document.getElementById("sausage").remove();
+  }
+  const deletePepperoni = () => {
+    setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese);
+    document.getElementById("pepperoni").remove();
+  }
+  const deleteOlives = () => {
+    setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese);
+    document.getElementById("olives").remove();
+  }
+
+  const deletePeppers = () => {
+    setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese);
+    document.getElementById("peppers").remove();
+  }
+  const deleteMush = () => {
+    setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese);
+    document.getElementById("mush").remove();
+  }
+  const deleteCheese = () => {
+    setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese);
+    document.getElementById("cheese").remove();
+  }
   // Gets all userinfo and updates leaderboard on initial page load.
   if (firstLoad) {
     getBal();
@@ -176,27 +215,121 @@ export default function Game({ username }) {
 
   // HTML layout of the game page, split into 4 sections (pizza button, bank, leaderboard, upgrade shop).
   return (
-    <div className="gameboard">
-      <div className="welcome">Welcome to {username}'s pizzeria</div>
+    <div className="gameboard" >
+      {/* <div className="welcome">Welcome to {username}'s pizzeria</div> */}
 
       <div className="wrapper">
        
       
-       <button className = "pizza_button" onClick={() =>
+       {/* <button className = "pizza_button" onClick={() =>
             setGameState(balance + cpp, cpp, spending, revenue + cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)
             
         }>
           <div className="bank">
           
-            <p>Balance: $ {balance}</p>
+            <p>Balance: $ {balance} </p> 
             <p>Price per Pizza: ${cpp}</p>
-            <p>Total Spending: ${spending}</p>
+           <p>Total Spending: ${spending}</p>
             <p>Revenue: ${revenue}</p>
           
         </div>
-        </button>
+        <div className = "specials">
+          <div className = "textsp"></div>
+        <p>  &nbsp; &nbsp; Sausage: $500</p>
+        <p> Extra Cheese: $1500</p>
+        <p> Olives: $3000</p>
+        <p> &nbsp; &nbsp; Pepperoni: $1000</p>
+        <p> &nbsp; &nbsp;&nbsp; Mushrooms: $1500</p>
+        <p> &nbsp; &nbsp;&nbsp; Peppers: $500</p>
+      </div>
+        </button> */}
        
-        <div className ="leader">
+       
+       <button className = "pizza_button" onClick={() =>
+            setGameState(balance + cpp, cpp, spending, revenue + cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)
+            
+        }>
+          </button>
+          
+          <div className="bank">
+          
+            <p>Balance: $ {balance} </p> 
+            <p>Price per Pizza: ${cpp}</p>
+           <p>Total Spending: ${spending}</p>
+            <p>Revenue: ${revenue}</p>
+          
+        </div>
+        <div className = "specials">
+          <div className = "textsp"></div>
+        <p>  &nbsp; &nbsp; Sausage: $500</p>
+        <p> &nbsp; &nbsp; Extra Cheese: $1500</p>
+        <p> Olives: $3000</p>
+        <p> &nbsp; &nbsp; Pepperoni: $1000</p>
+        <p> &nbsp; &nbsp;&nbsp; Mushrooms: $1500</p>
+        <p> &nbsp; &nbsp;&nbsp; Peppers: $500</p>
+      </div>
+        
+      <p className="footer"> Click the pizza to make and sell your pizzas!!</p>
+      </div>
+   
+      <div className="bottomwrapper">
+        <div className="store">
+
+          <div className="store1">
+            
+          <button id= "pepperoni" className="pepperoni" disabled={ balance < 1000} onClick={() =>
+             deletePepperoni()
+          }>
+           
+          </button>
+
+          <button id="mush" className="mush" disabled={ balance < 1500} onClick={() =>
+              deleteMush()
+          }>
+           
+            
+          </button> 
+          </div>
+
+          <div className="store2">
+          <button id="peppers" className="peppers" disabled={ balance < 2000} onClick={() =>
+              deletePeppers()
+          }>
+           
+          </button>
+
+          <button id= "cheese" className="cheese" disabled={ balance < 1500} onClick={() =>
+             deleteCheese()
+          }>
+           
+          </button>
+
+          </div>
+        
+          
+
+          <div className="store3">
+          <button className = "sausage" id="sausage" disabled={ balance < 500}   onClick={() =>
+              deleteSausage()
+         }>
+            
+          </button>
+          
+
+          <button id="olives" className="olives" disabled={ balance < 3000} onClick={() =>
+              deleteOlives()
+          }>
+          
+          </button>
+          </div>
+          
+         
+        
+        </div>
+         
+        
+      </div>
+      <div className ="leader">
           <div className="leaderboard1">Leaderboard
         <div className="leaderboard">
           {leaders.map((leader, index) => (
@@ -205,70 +338,7 @@ export default function Game({ username }) {
         </div>
         </div>
           </div>
-       
-      
-      </div>
-   
-      <div className="bottomwrapper">
-        <div className="store">
-          
-
-
-          <div className="store1">
-            
-          <button className="pepperoni" disabled={pepperoni === 1 || balance < 1000} onClick={() =>
-              setGameState(balance - 1000, cpp + 3, spending + 1000, revenue, 1, mushroom, pepper, sausage, olive, cheese)
-          }>
-            Pepperoni: $1000
-          </button>
-
-          <button className="mush" disabled={mushroom === 1 || balance < 1500} onClick={() =>
-              setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, 1, pepper, sausage, olive, cheese)
-          }>
-            Mushrooms: $1500
-          </button> 
-          </div>
-
-          <div className="store2">
-          <button className="peppers" disabled={pepper === 1 || balance < 2000} onClick={() =>
-              setGameState(balance - 2000, cpp + 10, spending + 2000, revenue, pepperoni, mushroom, 1, sausage, olive, cheese)
-          }>
-            Peppers: $2000
-          </button>
-
-          <button className="cheese" disabled={cheese === 1 || balance < 1500} onClick={() =>
-              setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, mushroom, pepper, sausage, olive, 1)
-          }>
-            Extra Cheese: $1500
-          </button>
-
-          </div>
-        
-          
-          
-
-
-
-          <div className="store3">
-          <button className="sausage" disabled={sausage === 1 || balance < 500} onClick={() =>
-              setGameState(balance - 500, cpp + 2, spending + 500, revenue, pepperoni, mushroom, pepper, 1, olive, cheese)
-          }>
-            Sausages: $500
-          </button>
-
-          <button className="olives" disabled={olive === 1 || balance < 3000} onClick={() =>
-              setGameState(balance - 3000, cpp + 8, spending + 3000, revenue, pepperoni, mushroom, pepper, sausage, 1, cheese)
-          }>
-            Olives: $3000
-          </button>
-          </div>
-          
-         
-        
-        </div>
-         
-        
-      </div>
+     
     </div>
   );
 }

@@ -21,21 +21,21 @@
     width: 100vw;
 }
 .pizza_button{
-    height: 60vh;
-    width: 55vw;
+    height: 55vh;
+    width: 33vw;
    
     background-image: url("../../Assets/pizzalogo2.jpeg");
-    background-size: 40vw 70vh;
+    background-size: 37vw 65vh;
     background-position: fixed;
     background-repeat:no-repeat;
     background-color:white;
     float:left;
-    margin-top: -10vh;
+   
     border: none;
 }
 .bank{
    float: right;
-   margin-right: -30px;
+  margin-right: 500px;
     height:46vh;
     width:30vw;
     color: black;
@@ -49,30 +49,45 @@
     
     
 }
-
-
-
-
-.leader{
+.footer{
     font-family: 'Fjalla One', sans-serif;
-   font-family: 'M PLUS 1 Code', sans-serif;
-   font-weight: bolder;
-  font-size: 25px;
-  width: 30vw;
-  float:right;
-  margin-top: -250px;
-  
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    
+    font-size: 25px;
+    margin-top: -170px;
+    width: 30vw;
+    margin-left: 20px;
 
 }
 .leaderboard1{
-    font-size: 30px;
+    margin-top: -260px;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    /* background-color: firebrick; */
+    font-size: 20px;
+    margin-left: 27px;
+    color: black;
+    padding: 10px;
+    width: 25vw;
+}
+
+
+
+.text{
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+
 }
 
 
 .store {
     float:right;
-    margin-top: -550px;
-    margin-right: 15vw;
+   
+    margin-top: -50vh;
+    margin-right: 10vw;
+
  
 }
 .pepperoni{
@@ -84,9 +99,7 @@
     background-repeat: no-repeat;
     height: 150px;
     width: 150px;
-    border-radius: 2%;
-    margin: 10px;
-    padding: 10px;
+    margin: 15px;
 }
 .peppers{
     background-image: url("peppers.jpg");
@@ -147,3 +160,30 @@
     width: 150px;
     margin: 15px;
 }
+.mush:disabled{
+    opacity: 35%;
+}.pepperoni:disabled{
+    opacity: 35%;
+}.peppers:disabled{
+    opacity: 35%;
+}.olives:disabled{
+    opacity: 35%;
+}.cheese:disabled{
+    opacity: 35%;
+}.sausage:disabled{
+    opacity: 35%;
+}
+.specials{
+    background-image: url("specials.png");
+    background-size: cover;
+    height: 45vh;
+    width: 25vw;
+    margin-left: 35vw;
+    margin-top: 35vh;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bold;
+   
+    text-align: center;
+}
+
