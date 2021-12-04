@@ -7,11 +7,6 @@ All users endpoints go through "/app/users" and are found in [this file](/backen
 GET /app/users/
 > Gets all users in the database.
 
-### **Parameters**
-| Name | Type | Description |
-| --- | --- | --- |
-| x | y | z |
-
 --- 
 ### **Request**
 GET /app/users/:id
@@ -20,7 +15,7 @@ GET /app/users/:id
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| id | integer | Required. Specify where to look for specific userinfo |
 
 --- 
 ### **Request**
@@ -30,7 +25,7 @@ GET /app/users/getbal/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -40,7 +35,7 @@ GET /app/users/getcpp/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -50,7 +45,7 @@ GET /app/users/getspending/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -60,7 +55,7 @@ GET /app/users/getrevenue/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -70,7 +65,7 @@ GET /app/users/getpepperoni/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -80,7 +75,7 @@ GET /app/users/getmushroom/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -90,7 +85,7 @@ GET /app/users/getpepper/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -100,7 +95,7 @@ GET /app/users/getsausage/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -110,7 +105,7 @@ GET /app/users/getcheese/:username
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
 
 --- 
 ### **Request**
@@ -120,7 +115,8 @@ POST /app/users/create
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
+| password | string | Required. The password of the user. |
 
 --- 
 ### **Request**
@@ -130,7 +126,8 @@ POST /app/users/login
 ### **Parameters**
 | Name | Type | Description |
 | --- | --- | --- |
-| x | y | z |
+| username | string | Required. The username of the user. Cannot be identical to another username. |
+| password | string | Required. The password of the user. |
 
 --- 
 ### **Request**
