@@ -53,7 +53,17 @@ export default function AccountManagement(/*{ username }*/) {
       var answer = window.confirm("Are you sure you want to delete your account?")
       if (!answer) { return }
 
-      // delete account
+      const deleteOptions = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username
+        }),
+      };
+      fetch("/app/users/delete/" + username, deleteOptions)
+        .then(alert("Your account has been deleted"))
   }
 
   return (
