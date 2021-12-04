@@ -15,6 +15,15 @@ export default function Game({ username }) {
   const [firstLoad, setFirstLoad] = useState(true);
   const [leaders, setLeaders] = useState([]);
 
+  // Gets the balance the user has.
+  const getBal = () => {
+    fetch("/app/users/getbal/" + username)
+      .then((res) => res.json())
+      .then((json) => {
+        setBal(json.result);
+      });
+  };
+
   // Gets the cost per pizza the user has.
   const getCPP = () => {
     fetch("/app/users/getcpp/" + username)
