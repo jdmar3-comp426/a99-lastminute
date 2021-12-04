@@ -11,7 +11,7 @@ app.use(express.json());
 const usersRouter = require("./Users/UsersRouter");
 app.use("/app/users", usersRouter);
 
-// stablish history endpoints
+// Establish history endpoints
 const historyRouter = require("./History/HistoryRouter");
 app.use("/app/history", historyRouter);
 
