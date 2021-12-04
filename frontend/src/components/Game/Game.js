@@ -176,23 +176,9 @@ export default function Game({ username }) {
       <div className="welcome">Welcome to {username}'s pizzeria</div>
 
       <div className="wrapper">
-        <button
-          className="pizza_button"
-          onClick={() =>
-            setGameState(
-              balance + cpp,
-              cpp,
-              spending,
-              revenue + cpp,
-              pepperoni,
-              mushroom,
-              pepper,
-              sausage,
-              olive,
-              cheese
-            )
-          }
-        ></button>
+        <button className="pizza_button" onClick={() =>
+            setGameState(balance + cpp, cpp, spending, revenue + cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)
+        }/>
 
         <div className="bank">
           BANK
