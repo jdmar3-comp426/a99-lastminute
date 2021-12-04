@@ -6,6 +6,21 @@ import pizzalogo from "../../Assets/pizzalogo2.jpeg";
 import pizzastore from "../../Assets/pizzastore.jpeg";
 import "./Login.css";
 
+const pushLogin = (timestamp, username) => {
+  const loginInfo = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: username,
+      type: "login",
+      time: timestamp
+    }),
+  };  
+  fetch("/app/history/create/", loginInfo)
+};
+
 async function attemptLoginUser(username, password) {
   const requestOptions = {
     method: "POST",
@@ -35,6 +50,8 @@ export default function Login({ setUsernameToken, handleToggleCreateAccount }) {
 
     if (json.result === "success") {
       setUsernameToken(username);
+      var timestamp = Math.round(new Date() / 1000);
+      pushLogin(timestamp, username);
     } else {
       alert(json.message);
     }

@@ -46,24 +46,36 @@ export default function AccountManagement(/*{ username }*/) {
   }
 
   const handleLogout = (event) => {
-
-  }
+    var timestamp = Math.round(new Date() / 1000);
+    const logoutInfo = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        type: "logout",
+        time: timestamp
+      }),
+    };
+    fetch("/app/history/create/", logoutInfo)
+  };
 
   const handleDeleteAccount = (event) => {
-      var answer = window.confirm("Are you sure you want to delete your account?")
-      if (!answer) { return }
+    var answer = window.confirm("Are you sure you want to delete your account?")
+    if (!answer) { return }
 
-      const deleteOptions = {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username
-        }),
-      };
-      fetch("/app/users/delete/" + username, deleteOptions)
-        .then(alert("Your account has been deleted"))
+    const deleteOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username
+      }),
+    };
+    fetch("/app/users/delete/" + username, deleteOptions)
+      .then(alert("Your account has been deleted"))
   }
 
   return (
@@ -108,8 +120,8 @@ export default function AccountManagement(/*{ username }*/) {
       </form>
 
       <div class="settings_item row spacer destructive">
-          <h3>Delete Account</h3>
-          <button onClick={handleDeleteAccount}>Delete Account</button>
+        <h3>Delete Account</h3>
+        <button onClick={handleDeleteAccount}>Delete Account</button>
       </div>
 
       <div class="settings_item">
