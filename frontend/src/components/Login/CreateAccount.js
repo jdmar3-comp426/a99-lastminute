@@ -50,7 +50,7 @@ export default function CreateAccount({ setUsernameToken }) {
   };
 
   return (
-    // html stuff
+    // HTML layout of CreateAccount
     <div className="full">
       <img className="border_image" src={pizzaimage1} alt="" />
       <div className="container">
