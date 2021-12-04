@@ -16,3 +16,5 @@ Then, Sam will do the following:
 2. In his forked repo (`samrshi/a99-lastminute`), accept the changes made to `jdmar3-comp426/a99-lastminute`.
 
 This will automatically trigger a new deployment on Heroku (pretty cool, right?) and the new version will be deployed in a couple minutes.
+
+Eventually, when/if we get approval for Heroku to monitor our shared repo, we will only have to merge main into `deploy` and it'll automatically trigger a deployment.
