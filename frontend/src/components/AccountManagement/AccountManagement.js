@@ -17,13 +17,8 @@ export default function AccountManagement(/*{ username }*/) {
       
       const loginOptions = {
           method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: {
-              username: username,
-              password: md5(password)
-          }
+          headers: { "Content-Type": "application/json" },
+          body: { username: username, password: md5(password) }
       }
 
       const loginJson = await fetch("/app/users/login", loginOptions).then(res => res.json())
@@ -36,13 +31,29 @@ export default function AccountManagement(/*{ username }*/) {
       // otherwise, update user info
   }
 
+  const handleLogout = (event) => {
+
+  }
+
+  const handleDeleteAccount = (event) => {
+      var answer = window.confirm("Are you sure you want to delete your account?")
+      if (!answer) { return }
+
+      // delete account
+  }
+
   return (
     <div class="settings_container">
       <h1>Account Settings</h1>
 
       <div class="settings_item row">
-        <h3>Username</h3>
+        <h3>Username:</h3>
         <p>{username}</p>
+      </div>
+
+      <div class="settings_item row spacer">
+        <h3>Log Out</h3>
+        <button onClick={handleLogout}>Log Out</button>
       </div>
 
       <form class="settings_item column" onSubmit={handleChangePassword}>
@@ -71,6 +82,11 @@ export default function AccountManagement(/*{ username }*/) {
 
           <button type="submit">Change Password</button>
       </form>
+
+      <div class="settings_item row spacer destructive">
+          <h3>Delete Account</h3>
+          <button onClick={handleDeleteAccount}>Delete Account</button>
+      </div>
 
       <div class="settings_item">
         <h3>Login History</h3>
