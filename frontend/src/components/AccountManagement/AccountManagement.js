@@ -6,6 +6,8 @@ export default function AccountManagement({ username, setUsernameToken }) {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordAgain, setNewPasswordAgain] = useState("");
+  const [history, setHistory] = useState([]);
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const handleChangePassword = async (event) => {
     event.preventDefault();
@@ -22,7 +24,7 @@ export default function AccountManagement({ username, setUsernameToken }) {
       },
       body: JSON.stringify({
         username: username,
-        password: md5(password)
+        password: md5(newPassword)
       }),
     };
 
@@ -45,15 +47,55 @@ export default function AccountManagement({ username, setUsernameToken }) {
   }
 
   const handleLogout = (event) => {
+    var timestamp = Math.round(new Date() / 1000);
+    const logoutInfo = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        type: "loggedOut",
+        time: timestamp
+      }),
+    };
+    fetch("/app/history/create/", logoutInfo)
+
     setUsernameToken(undefined)
-  }
+  };
 
   const handleDeleteAccount = (event) => {
-      var answer = window.confirm("Are you sure you want to delete your account?")
-      if (!answer) { return }
+    var answer = window.confirm("Are you sure you want to delete your account?")
+    if (!answer) { return }
 
-      // delete account
-      handleLogout()
+    const deleteOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username
+      }),
+    };
+    fetch("/app/users/delete/" + username, deleteOptions)
+      .then(() => {
+        //   handleLogout();
+          alert("Your account has been deleted")
+      })
+
+  }
+
+  const getHistory = (event) => {
+    fetch("/app/history/")
+      .then(res => res.json())
+      .then(json => {
+        setHistory(json)
+      })
+  }
+
+  if (firstLoad) {
+    getHistory()
+    setFirstLoad(false)
   }
 
   return (
@@ -98,12 +140,13 @@ export default function AccountManagement({ username, setUsernameToken }) {
       </form>
 
       <div class="settings_item row spacer destructive">
-          <h3>Delete Account</h3>
-          <button onClick={handleDeleteAccount}>Delete Account</button>
+        <h3>Delete Account</h3>
+        <button onClick={handleDeleteAccount}>Delete Account</button>
       </div>
 
       <div class="settings_item">
         <h3>Login History</h3>
+        {/* <p>{history}</p> */}
       </div>
     </div>
   );

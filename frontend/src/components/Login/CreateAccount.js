@@ -39,6 +39,19 @@ export default function CreateAccount({ setUsernameToken }) {
     if (json.result === "success") {
       alert(json.message);
       setUsernameToken(username);
+      var timestamp = Math.round(new Date() / 1000);
+      const createInfo = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          type: "createdAccount",
+          time: timestamp
+        }),
+      };
+      fetch("/app/history/create/", createInfo)
     } else {
       alert(json.message);
     }

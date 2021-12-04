@@ -92,10 +92,10 @@ router.patch("/updatepass/:username", (req, res) => {
 
 // Delete User API
 // Send user id, deletes database entry with that id
-router.delete("/delete/:id", (req, res) => {	
-	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
-	const info = stmt.run(req.params.id);
-	res.status(200).json({"message": info.changes + " record deleted: ID " + req.params.id + " (200)"});
+router.delete("/delete/:username", (req, res) => {	
+	const stmt = db.prepare("DELETE FROM userinfo WHERE username = ?");
+	const info = stmt.run(req.params.username);
+	res.status(200).json({"message": info.changes + " record deleted: user " + req.params.username + " (200)"});
 });
 
 // Log-in API
