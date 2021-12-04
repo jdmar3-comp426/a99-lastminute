@@ -157,12 +157,12 @@ export default function Game({ username }) {
       <div className="bottomwrapper">
         <div className="store">
           <h1 className="oven_header">Store</h1>
-          <button className="pep" disabled = {pepperoni===1 || balance < 1000} onClick={() => setGameState(balance-1000,cpp+3,spending+1000,revenue, 1, mushroom, pepper, sausage, olive, cheese)}>Pepperoni: $1000 {pepperoni}</button>
-          <button className="oven">Mushrooms: $1200</button>
-          <button className="oven">Peppers: $1400</button>
-          <button className="oven">Sausage: $1600</button>
-          <button className="oven">Olives: $1800</button>
-          <button className="oven">Cheese: $2000</button>
+          <button className="pepperoni" disabled = {pepperoni===1 || balance < 1000} onClick={() => setGameState(balance-1000,cpp+3,spending+1000,revenue, 1, mushroom, pepper, sausage, olive, cheese)}>Pepperoni: $1000</button>
+          <button className="mushroom" disabled = {mushroom===1 || balance < 1500} onClick={() => setGameState(balance-1500,cpp+5,spending+1500,revenue, pepperoni, 1, pepper, sausage, olive, cheese)}>Mushrooms: $1500</button>
+          <button className="pepper" disabled = {pepper===1 || balance < 2000} onClick={() => setGameState(balance-2000,cpp+10,spending+2000,revenue, pepperoni, mushroom, 1, sausage, olive, cheese)}>Peppers: $2000</button>
+          <button className="sausage" disabled = {sausage===1 || balance < 500} onClick={() => setGameState(balance-500,cpp+2,spending+500,revenue, pepperoni, mushroom, pepper, 1, olive, cheese)}>Sausages: $500</button>
+          <button className="olive" disabled = {olive===1 || balance < 3000} onClick={() => setGameState(balance-3000,cpp+8,spending+3000,revenue, pepperoni, mushroom, pepper, sausage, 1, cheese)}>Olives: $3000</button>
+          <button className="cheese" disabled = {cheese===1 || balance < 1500} onClick={() => setGameState(balance-1500,cpp+5,spending+1500,revenue, pepperoni, mushroom, pepper, sausage, olive, 1)}>Extra Cheese: $1500</button>
         </div>
 
         <div className="leaderboard">Leaderboard</div>
