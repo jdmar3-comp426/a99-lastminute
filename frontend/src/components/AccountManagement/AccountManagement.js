@@ -9,31 +9,40 @@ export default function AccountManagement(/*{ username }*/) {
   const [newPasswordAgain, setNewPasswordAgain] = useState("");
 
   const handleChangePassword = async (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      if (newPassword !== newPasswordAgain) {
-          alert("New Passwords must match")
-      }
-      
-      const loginOptions = {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: {
-              username: username,
-              password: md5(password)
-          }
-      }
+    if (newPassword !== newPasswordAgain) {
+      alert("New Passwords must match")
+      return
+    }
 
-      const loginJson = await fetch("/app/users/login", loginOptions).then(res => res.json())
-      if (loginJson.result !== "success") {
-          alert(loginJson.message)
-      }
+    const loginOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: md5(password)
+      }),
+    };
 
-      // if current password is incorrect, yell at them (maybe with login endpoint)
-      // if new passwords don't match, yell at them
-      // otherwise, update user info
+    const loginJson = await fetch("/app/users/login", loginOptions).then(res => res.json())
+    if (loginJson.result !== "success") {
+      alert(loginJson.message)
+    } else {
+      const passOptions = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password: md5(newPassword),
+        }),
+      };
+      fetch("/app/users/updatepass/" + username, passOptions)
+        .then(alert("Password updated!"))
+    }
   }
 
   return (
@@ -48,28 +57,28 @@ export default function AccountManagement(/*{ username }*/) {
       <form class="settings_item column" onSubmit={handleChangePassword}>
         <h3>Change Password</h3>
 
-          <label for="password">Current Password</label>
-          <input
-            class="settings_input"
-            type="password" name="password" placeholder="Current Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <label for="password">Current Password</label>
+        <input
+          class="settings_input"
+          type="password" name="password" placeholder="Current Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-          <label for="new_password">New Password</label>
-          <input
-            class="settings_input"
-            type="password" name="new_password" placeholder="New Password"
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
+        <label for="new_password">New Password</label>
+        <input
+          class="settings_input"
+          type="password" name="new_password" placeholder="New Password"
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
 
-          <label for="new_password_agin">Retype New Password</label>
-          <input
-            class="settings_input"
-            type="password" name="new_password_again" placeholder="Retype New Password"
-            onChange={(e) => setNewPasswordAgain(e.target.value)}
-          />
+        <label for="new_password_agin">Retype New Password</label>
+        <input
+          class="settings_input"
+          type="password" name="new_password_again" placeholder="Retype New Password"
+          onChange={(e) => setNewPasswordAgain(e.target.value)}
+        />
 
-          <button type="submit">Change Password</button>
+        <button type="submit">Change Password</button>
       </form>
 
       <div class="settings_item">

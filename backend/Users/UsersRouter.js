@@ -64,17 +64,9 @@ router.post('/create', (req, res) => {
     })
 })
 
-// Update user info for a user with the given id
-// Send id in the URL path and username/password in request body
-router.patch("/updateuser/:id", (req, res) => {	
-	const stmt = db.prepare("UPDATE userinfo SET username = COALESCE(?,username), password = COALESCE(?,password) WHERE id = ?");
-	const info = stmt.run(req.body.username, md5(req.body.password), req.params.id);
-	res.status(200).json({"message": info.changes + " record updated: ID " + req.params.id + " (200)"});
-});
-
 router.patch("/updatepass/:username", (req, res) => {	
 	const stmt = db.prepare("UPDATE userinfo SET password = COALESCE(?,password) WHERE username = ?");
-	const info = stmt.run(req.body.password, req.params.id);
+	const info = stmt.run(req.body.password, req.params.username);
 	res.status(200).json({"message": info.changes + " record updated: user " + req.params.username + " (200)"});
 });
 
