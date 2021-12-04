@@ -1,6 +1,6 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6427013&assignment_repo_type=AssignmentRepo)
-# Pizza Press (sôst)
-Our final project for COMP426 was called "Pizza Press" in loving memory of the pizza restaurant that used to be on Franklin Street. It works similarly to once wildly popular mobile game "Cookie Clicker." Every time you click on the pizza button, you sell a pizza and make money! You can use the money you made to buy toppings that increase the price of your pizzas. The button tracks your current balance and total revenue. You can even compete for a spot on the leaderboard. Just press the pizza to get started!
+# Pizza Presser (sôst)
+Our final project for COMP426 was called "Pizza Presser" in loving memory of the pizza restaurant that used to be on Franklin Street. It works similarly to once wildly popular mobile game "Cookie Clicker." Every time you click on the pizza button, you sell a pizza and make money! You can use the money you made to buy toppings that increase the price of your pizzas. The button tracks your current balance and total revenue. You can even compete for a spot on the leaderboard. Just press the pizza to get started!
 
 # Live Version
 Check out the live, hosted version of our project at [https://a99-lastminute.herokuapp.com](https://a99-lastminute.herokuapp.com)

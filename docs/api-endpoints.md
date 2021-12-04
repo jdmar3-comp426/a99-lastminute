@@ -182,6 +182,8 @@ DELETE /app/users/delete/:id
 | Name | Type | Description |
 | --- | --- | --- |
 | id | integer | ID of the account to be deleted |
+<br/>
+
 
 ## History Endpoints
 All history endpoints go through "/app/history" and are found in [this file](/backend/History/HistoryRouter).
