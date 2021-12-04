@@ -12,6 +12,8 @@ router.get("/", (req, res) => {
     res.status(200).json(stmt);
 })
 
+
+
 // Returns information from specific interaction
 // Send id in the URL path
 router.get("/:id", (req, res) => {

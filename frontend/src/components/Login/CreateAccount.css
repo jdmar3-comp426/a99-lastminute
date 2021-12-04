@@ -7,12 +7,12 @@
 .full {
   display: grid;
   width: 100vw;
-  height: 100vh;
+  
   grid-template-columns: 20vw, 60vw, 20vw;
-  grid-template-rows: 5vh, 20vh, 20vh, 20vh, 20vh;
+  grid-template-rows:  10vh, 10vh, 10vh, 10vh;
 }
 .container {
-  height: 1100px;
+  height: 700px;
   border: 9px;
   margin-left: 20vw;
   width: 60vw;
@@ -41,10 +41,10 @@
   margin-right: 50px;
 }
 .forms {
-  height: 800px;
+  height: 500px;
   width: 55vw;
   display: flex;
-
+  margin-top: -80px;
   justify-content: space-around;
   flex-direction: column;
 }

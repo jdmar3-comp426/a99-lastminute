@@ -5,38 +5,49 @@ import '../../Assets/store.jpeg'
 class Game extends Component {
   constructor(props) {
     super(props)
-    this.state = { username: "newtest", pizzas: 0}
-    this.attemptUpdatePizza = this.attemptUpdatePizza.bind(this);
-    this.getPizzas = this.getPizzas.bind(this);
-    this.setPizzas = this.setPizzas.bind(this);
+    this.state = { username: "newtest", balance: 0, cpp: 0}
+    this.attemptUpdateBal = this.attemptUpdateBal.bind(this);
+    this.getBal = this.getBal.bind(this);
+    this.getCPP = this.getCPP.bind(this);
+    this.setBal = this.setBal.bind(this);
   }
 
-  getPizzas() {
-    fetch("/app/users/getpizza/"+this.state.username)
+  getBal() {
+    fetch("/app/users/getbal/"+this.state.username)
     .then(res => res.json())
     .then(json => {
-      this.pizzas = parseInt(json.result)+1;
+      this.balance = json.result;
     })
   }
 
-  setPizzas() {
-    var setPizzas = {
+  getCPP() {
+    fetch("/app/users/getcpp/"+this.state.username)
+    .then(res => res.json())
+    .then(json => {
+      this.cpp = json.result;
+      this.balance = this.balance + this.cpp;
+    })
+  }
+
+  setBal() {
+    var setBal = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        pizzas: this.pizzas,
+        balance: this.balance,
       }),
     };
 
-    fetch("/app/users/setpizza/"+this.state.username, setPizzas)
+    fetch("/app/users/setbal/"+this.state.username, setBal)
     .then(res => res.json())
   } 
 
-  attemptUpdatePizza() {
-    this.getPizzas();
-    this.setPizzas();
+  attemptUpdateBal() {
+    this.getBal();
+    this.getCPP();
+    this.setBal();
   }
 
   render() {
@@ -49,7 +60,7 @@ class Game extends Component {
         <button
           className="pizza_button"
           href="#"
-          onClick={this.attemptUpdatePizza}
+          onClick={this.attemptUpdateBal}
         >
         </button>
         <div className="bank">
