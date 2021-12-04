@@ -24,7 +24,7 @@ export default function AccountManagement({ username, setUsernameToken }) {
       },
       body: JSON.stringify({
         username: username,
-        password: md5(newPassword)
+        password: md5(password)
       }),
     };
 
