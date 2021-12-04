@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import App from "./components/App/App"
+import { App, Users } from './components/index'
+import AccountManagement from './components/AccountManagement/AccountManagement'
 
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element = {<App />} />
-            <Route path="*" element = {<p>404 Not Found</p>} />
+            <Route path="/users" element = {<Users />} />
+            <Route path="/accountmanagement" element = {<AccountManagement />} /> {/* Remove this */}
         </Routes>
     </BrowserRouter>, document.getElementById('root')
 );

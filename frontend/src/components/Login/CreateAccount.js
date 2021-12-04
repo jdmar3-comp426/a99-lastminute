@@ -42,6 +42,19 @@ export default function CreateAccount({ setUsernameToken }) {
     // If it was successful then create the account else tell the user why it didn't work.
     if (json.result === "success") {
       setUsernameToken(username);
+      var timestamp = Math.round(new Date() / 1000);
+      const createInfo = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          type: "createdAccount",
+          time: timestamp
+        }),
+      };
+      fetch("/app/history/create/", createInfo)
     } else {
       alert(json.message);
     }
