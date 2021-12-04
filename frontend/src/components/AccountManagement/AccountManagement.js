@@ -1,6 +1,6 @@
-import md5 from "md5";
 import React, { useState } from "react";
 import "./AccountManagement.css";
+import md5 from "md5";
 
 export default function AccountManagement(/*{ username }*/) {
   const username = "sam";
@@ -28,9 +28,9 @@ export default function AccountManagement(/*{ username }*/) {
 
       const loginJson = await fetch("/app/users/login", loginOptions).then(res => res.json())
       if (loginJson.result !== "success") {
-          alert(login.message)
+          alert(loginJson.message)
       }
-      
+
       // if current password is incorrect, yell at them (maybe with login endpoint)
       // if new passwords don't match, yell at them
       // otherwise, update user info
