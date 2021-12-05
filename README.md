@@ -5,15 +5,8 @@ Our final project for COMP426 was called "Pizza Presser" in loving memory of the
 # Live Version
 Check out the live, hosted version of our project at [https://a99-lastminute.herokuapp.com](https://a99-lastminute.herokuapp.com)
 
-<<<<<<< HEAD
-# Live Version
-Check out the live, hosted version of our project at ![https://a99-lastminute.herokuapp.com](https://a99-lastminute.herokuapp.com)
-
-## First steps
-=======
 ## Tech Stack
 To see an overview of our tech stack, [click here](/docs/tech-stack.md).
->>>>>>> main
 
 ## API Endpoints
 To take a look at our API documentation, [click here](/docs/api-endpoints.md).
