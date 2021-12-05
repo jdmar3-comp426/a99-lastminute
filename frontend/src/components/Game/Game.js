@@ -197,9 +197,10 @@ export default function Game({ username }) {
   return (
     <div className="gameboard">
       <div className="wrapper">
-        <button className="pizza_button" onClick = { () =>
+        <button className="pizza_button" onClick = {() => {
+            console.log(pepperoni, sausage, cheese, olive, pepper, mushroom)
             setGameState(balance + cpp, cpp, spending, revenue + cpp, pepperoni, mushroom, pepper, sausage, olive, cheese)
-        }/>
+        }}/>
 
         <div className="bank">
           <p>Balance: $ {balance} </p>

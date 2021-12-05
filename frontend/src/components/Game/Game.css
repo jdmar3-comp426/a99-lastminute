@@ -161,17 +161,17 @@
     margin: 15px;
 }
 .mush:disabled{
-    opacity: 35%;
+    opacity: 0.35;
 }.pepperoni:disabled{
-    opacity: 35%;
+    opacity: 0.35;
 }.peppers:disabled{
-    opacity: 35%;
+    opacity: 0.35;
 }.olives:disabled{
-    opacity: 35%;
+    opacity: 0.35;
 }.cheese:disabled{
-    opacity: 35%;
+    opacity: 0.35;
 }.sausage:disabled{
-    opacity: 35%;
+    opacity: 0.35;
 }
 .specials{
     background-image: url("specials.png");
