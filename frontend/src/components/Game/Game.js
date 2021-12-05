@@ -165,17 +165,16 @@ export default function Game({ username }) {
     setGameState(balance - 1000, cpp + 3, spending + 1000, revenue, 1, mushroom, pepper, sausage, olive, cheese);
   };
   const buyOlives = () => {
-    setGameState(balance - 3000, cpp + 2, spending + 3000, revenue, pepperoni, mushroom, pepper, sausage, 1, cheese);
+    setGameState(balance - 3000, cpp + 10, spending + 3000, revenue, pepperoni, mushroom, pepper, sausage, 1, cheese);
   };
-
   const buyPeppers = () => {
-    setGameState(balance - 2000, cpp + 2, spending + 2000, revenue, pepperoni, mushroom, 1, sausage, olive, cheese);
+    setGameState(balance - 2000, cpp + 8, spending + 2000, revenue, pepperoni, mushroom, 1, sausage, olive, cheese);
   };
   const buyMush = () => {
-    setGameState(balance - 1500, cpp + 2, spending + 1500, revenue, pepperoni, 1, pepper, sausage, olive, cheese);
+    setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, 1, pepper, sausage, olive, cheese);
   };
   const buyCheese = () => {
-    setGameState(balance - 1500, cpp + 2, spending + 1500, revenue, pepperoni, mushroom, pepper, sausage, olive, 1);
+    setGameState(balance - 1500, cpp + 5, spending + 1500, revenue, pepperoni, mushroom, pepper, sausage, olive, 1);
   };
 
   // Gets all userinfo and updates leaderboard on initial page load.
@@ -244,7 +243,7 @@ export default function Game({ username }) {
           </div>
         </div>
       </div>
-      
+
       <div className="leader">
         <div className="leaderboard1">
           Leaderboard
