@@ -16,11 +16,8 @@ async function attemptCreateAcount(username, password) {
     }),
   };
 
-<<<<<<< HEAD
-=======
   // Fetch the create user endpoint from UserRouter.js 
   // If it fails to create an account result === "failure". Else result === "success"
->>>>>>> main
   return fetch("/app/users/create", requestOptions).then((res) => res.json());
 }
 
@@ -30,10 +27,7 @@ export default function CreateAccount({ setUsernameToken }) {
   const [passwordAgain, setPasswordAgain] = useState("");
 
   const handleCreateAccount = async (event) => {
-<<<<<<< HEAD
-=======
     // If the event doesn't get explicitly handled, its default action should not be taken as it normally would be. 
->>>>>>> main
     event.preventDefault();
 
     // Checks for password equality. If it doesn't match tell the user. 
@@ -42,18 +36,11 @@ export default function CreateAccount({ setUsernameToken }) {
       return;
     }
 
-<<<<<<< HEAD
-=======
     // Calls the attemptCreateAcount. 
->>>>>>> main
     const json = await attemptCreateAcount(username, password);
 
     // If it was successful then create the account else tell the user why it didn't work.
     if (json.result === "success") {
-<<<<<<< HEAD
-      alert(json.message);
-      setUsernameToken(username);
-=======
       setUsernameToken(username);
       var timestamp = Math.round(new Date() / 1000);
       const createInfo = {
@@ -68,7 +55,6 @@ export default function CreateAccount({ setUsernameToken }) {
         }),
       };
       fetch("/app/history/create/", createInfo)
->>>>>>> main
     } else {
       alert(json.message);
     }
@@ -93,7 +79,6 @@ export default function CreateAccount({ setUsernameToken }) {
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
-<<<<<<< HEAD
 
           <label for="password" className="label">
             password:
@@ -115,29 +100,6 @@ export default function CreateAccount({ setUsernameToken }) {
             />
           </label>
 
-=======
-
-          <label for="password" className="label">
-            password:
-            <input
-              className="input_box"
-              type="password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-
-          <label for="password_again" className="label">
-            Re-enter password:
-            <input
-              className="input_box"
-              type="password"
-              name="password_again"
-              onChange={(e) => setPasswordAgain(e.target.value)}
-            />
-          </label>
-
->>>>>>> main
           <button type="submit" className="button1">
             Submit
           </button>
