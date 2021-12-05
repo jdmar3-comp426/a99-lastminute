@@ -1,0 +1,73 @@
+.settings_container {
+  margin: 10px auto;
+  max-width: 750px;
+  font-family: "M PLUS 1 Code", sans-serif;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.spacer {
+  justify-content: space-between;
+}
+
+.settings_item {
+  margin: 5px;
+  padding: 10px 10px;
+  border: 1px solid #bbb;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.settings_item p {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+.settings_item h3 {
+  padding: 0;
+}
+
+.settings_input {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  border-color: #bbb;
+  border: #bbb solid 1px;
+  margin-left: 0;
+}
+
+.settings_item label {
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
+.settings_item button {
+  padding: 12px;
+  margin-top: 5px;
+  height: 50px;
+  min-width: 90px;
+  max-width: 180px;
+
+
+  border: none;
+  border-radius: 5px;
+
+  font-family: "M PLUS 1 Code", sans-serif;
+  font-weight: bolder;
+  font-size: 15px;
+  
+  background-color: lightgrey;
+  color: firebrick;
+}
+
+.destructive {
+  color: firebrick;
+}
