@@ -31,4 +31,4 @@ Our initial project planning and mid-project decision-making can be found [here]
 5. React-router-dom
 
 ## Demo Video
-[Click here]() for a demo video of our project.
+[Click here](https://youtu.be/CFIHARIeQSk) for a demo video of our project.
