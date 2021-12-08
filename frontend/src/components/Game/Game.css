@@ -1,0 +1,189 @@
+
+.gameboard{
+    display: grid;
+    grid-template-rows: 10vh, 60vh, 30vh;
+    grid-template-columns: 70vw, 30vw;
+    height: 130vh;
+    width: 100vw;
+    
+}
+.welcome{
+    grid-row: 0/1;
+    grid-column: 0/2;
+    font-size: 5vh;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bold;
+    margin-left: 8px;
+}
+.wrapper{
+    height: 45vh;
+    width: 100vw;
+}
+.pizza_button{
+    height: 55vh;
+    width: 33vw;
+   
+    background-image: url("../../Assets/pizzalogo2.jpeg");
+    background-size: 37vw 65vh;
+    background-position: fixed;
+    background-repeat:no-repeat;
+    background-color:white;
+    float:left;
+   
+    border: none;
+}
+.bank{
+   float: right;
+  margin-right: 500px;
+    height:46vh;
+    width:30vw;
+    color: black;
+    font-weight: bolder;
+    font-size: 50px;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    
+    font-size: 20px;
+    
+    
+}
+.footer{
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    
+    font-size: 25px;
+    margin-top: -170px;
+    width: 30vw;
+    margin-left: 20px;
+
+}
+.leaderboard1{
+    margin-top: -260px;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    /* background-color: firebrick; */
+    font-size: 20px;
+    margin-left: 27px;
+    color: black;
+    padding: 10px;
+    width: 25vw;
+}
+
+
+
+.text{
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+
+}
+
+
+.store {
+    float:right;
+   
+    margin-top: -50vh;
+    margin-right: 10vw;
+
+ 
+}
+.pepperoni{
+    background-image: url("pep.jpg");
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
+}
+.peppers{
+    background-image: url("peppers.jpg");
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: 1500;
+    font-size: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
+    padding: 0;
+}
+.olives{
+    background-image: url("olives.jpg");
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
+}
+.cheese{
+    background-image: url("cheese.jpg");
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: 900;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
+}
+.sausage{
+    background-image: url("sausage.jpg");
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    margin: 15px;
+    width: 150px;
+    font-weight: 1500;
+
+}
+.mush{
+    background-image: url("mushrooms.jpg");
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bolder;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 150px;
+    margin: 15px;
+}
+.mush:disabled{
+    opacity: 35%;
+}.pepperoni:disabled{
+    opacity: 35%;
+}.peppers:disabled{
+    opacity: 35%;
+}.olives:disabled{
+    opacity: 35%;
+}.cheese:disabled{
+    opacity: 35%;
+}.sausage:disabled{
+    opacity: 35%;
+}
+.specials{
+    background-image: url("specials.png");
+    background-size: cover;
+    height: 45vh;
+    width: 25vw;
+    margin-left: 35vw;
+    margin-top: 35vh;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-weight: bold;
+   
+    text-align: center;
+}
+

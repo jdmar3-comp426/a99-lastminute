@@ -1,0 +1,90 @@
+.title {
+  font-family: "Fjalla One", sans-serif;
+  font-family: "M PLUS 1 Code", sans-serif;
+  font-weight: bolder;
+  font-size: 50px;
+}
+.full {
+  display: grid;
+  width: 100vw;
+  
+  grid-template-columns: 20vw, 60vw, 20vw;
+  grid-template-rows:  10vh, 10vh, 10vh, 10vh;
+}
+.container {
+  height: 700px;
+  border: 9px;
+  margin-left: 20vw;
+  width: 60vw;
+  border-color: black;
+  border-style: solid;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  color: firebrick;
+  font-weight: bolder;
+  font-size: larger;
+}
+.create_form {
+  font-family: "Fjalla One", sans-serif;
+  font-family: "M PLUS 1 Code", sans-serif;
+  font-weight: bolder;
+  font-size: 35px;
+}
+.input_box {
+  height: 20px;
+}
+.pass_recs {
+  font-size: 20px;
+  margin-left: 15px;
+  margin-right: 50px;
+}
+.forms {
+  height: 500px;
+  width: 55vw;
+  display: flex;
+  margin-top: -80px;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.button1 {
+  margin-left: 50px;
+  height: 50px;
+  width: 90px;
+  border-radius: 5px;
+  border: none;
+
+  font-family: "Fjalla One", sans-serif;
+  font-family: "M PLUS 1 Code", sans-serif;
+  font-weight: bolder;
+  font-size: 25px;
+  background-color: lightgrey;
+  color: firebrick;
+}
+
+.button1:hover {
+  background-color: darkgrey;
+}
+.border_image {
+  height: 210px;
+  width: 300px;
+  transform: rotate(90deg);
+  grid-column: 3/4;
+  margin-left: -45px;
+  margin-top: 90px;
+  grid-row: 1/2;
+}
+.full {
+  height: 1100px;
+  width: 70vw;
+}
+.border_image2 {
+  height: 210px;
+  width: 330px;
+  transform: rotate(270deg);
+  grid-column: 1/2;
+  grid-row: 5/6;
+  margin-left: -279px;
+  margin-top: -480px;
+}

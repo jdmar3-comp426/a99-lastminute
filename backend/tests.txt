@@ -1,0 +1,34 @@
+Test Create
+curl -X POST -d "username=ling&password=supersecurepassword" http://localhost:3001/app/users/create
+
+Test Get User by ID
+curl -X GET http://localhost:3001/app/users/2/
+
+Test Update username
+curl -X PATCH -d "username=oldtest&password=adifferentpassword" http://localhost:3001/app/users/updateuser/2/
+
+Test Update pizzas
+curl -X PATCH -d "pizzas=5" http://localhost:3001/app/users/setpizza/3/
+
+Test Delete User
+curl -X DELETE http://localhost:3001/app/users/delete/2/
+
+Test Succesful Log-In
+curl -X POST -d "username=sam&password=38a7744f5523335db845ff1976bf4747" http://localhost:3001/app/users/login/
+
+Test Bad Log-In
+curl -X POST -d "username=sam&password=wrongpassword" http://localhost:3001/app/users/login/
+
+
+
+
+
+
+
+
+
+Test log-in
+curl -X POST -d "username=sam&type=loggedin&time=100" http://localhost:3001/app/history/create
+
+Test log-out
+curl -X POST -d "username=sam&type=loggedout&time=110" http://localhost:3001/app/history/create
